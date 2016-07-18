@@ -2,7 +2,9 @@
   "entrypoint": "index.html",
   "shell": "src/sportal-polymer.html",
   "fragments": [
-    "src/find.html",
-    "src/create.html"
+    "src/sportal-home.html",
+    "src/sportal-find.html",
+    "src/sportal-create.html",
+
   ]
 }
