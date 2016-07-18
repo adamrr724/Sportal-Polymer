@@ -5,6 +5,8 @@
     "src/sportal-home.html",
     "src/sportal-find.html",
     "src/sportal-create.html",
+    "src/sportal-events.html",
+    "src/sportal-map.html",
 
   ]
 }

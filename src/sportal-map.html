@@ -1,0 +1,43 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-marker.html">
+
+<dom-module id="sportal-map">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            google-map {
+               height: 600px;
+               width: 100%;
+
+            }
+
+        </style>
+
+        <div>
+            <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
+                <google-map-marker latitude="37.779" longitude="-122.3892"
+                                   draggable="true" title="Go Giants!"></google-map-marker>
+                <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+            </google-map>
+        </div>
+
+    </template>
+
+    <script>
+
+        Polymer({
+
+            is: 'sportal-map'
+
+        });
+
+    </script>
+
+</dom-module>
