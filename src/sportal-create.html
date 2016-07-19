@@ -12,12 +12,26 @@
         padding: 10px;
       }
 
+      paper-input {
+        width: 250px;
+      }
+
+      .header-text {
+        font-size: 25px;;
+      }
+
+      .create-header {
+        width: 100%;
+        text-align: center;
+        background-color: var(--material-green);
+      }
+
     </style>
     <div class="create-container">
-      <div class="create-header">
-        <h2>Create an Event</h2>
-        <h4>Add your game, league, run, race, or place to play to our page!</h4>
-      </div>
+      <paper-card class="create-header">
+        <p class="header-text">Create an Event</p>
+        <p>Add your game, league, run, race, or place to play to our page!</p>
+      </paper-card>
 
       <div class="create-form">
         <form is="iron-form" id="form" method="post" action="">
@@ -76,7 +90,7 @@
           </paper-dropdown-menu>
           <paper-input name="organization" label="Organization Name"></paper-input>
           <paper-input name="image" label="Image Link"></paper-input>
-          <paper-input name="notes" label="Notes"></paper-input>
+          <paper-textarea name="notes" label="Notes"></paper-textarea>
         </form>
       </div>
 
