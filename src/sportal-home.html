@@ -8,14 +8,90 @@
         <style>
             :host {
                 display: block;
-                padding: 10px;
+            }
+
+            #main-image {
+                width:100%;
+            }
+
+            .home-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .highlight-header-card{
+                width: 100%;
+                justify-content: center;
+            }
+
+            .highlight-header {
+                text-align: center;
+            }
+
+            .highlight-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .highlight-card {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .highlight {
+                flex-grow: 1;
+                text-align: center;
+                justify-content: center;
             }
 
         </style>
 
         <div>
-            <h1>Homepage</h1>
+            <paper-card>
+                <div class="card-content">
+                    <img id="pickup-highlight" src="../images/main-image.jpeg" alt="">
+                </div>
+            </paper-card>
         </div>
+
+        <div class="home-container">
+
+            <paper-card class="highlight-header-card">
+                <div class="highlight-header">
+                    <h1>Find the right sporting events for you. </h1>
+                </div>
+            </paper-card>
+
+            <div class="highlight-container">
+                <paper-card class="highlight-card">
+                    <div class="highlight">
+                        <h3>Pickup</h3>
+                    </div>
+                </paper-card>
+
+                <paper-card class="highlight-card">
+                    <div class="highlight">
+                        <h3>Leagues</h3>
+                    </div>
+                </paper-card>
+
+                <paper-card class="highlight-card">
+                    <div class="highlight">
+                        <h3>Runs and Races</h3>
+                    </div>
+                </paper-card>
+
+                <paper-card class="highlight-card">
+                    <div class="highlight">
+                        <h3>Places to Play</h3>
+                    </div>
+                </paper-card>
+
+            </div>
+        </div>
+
+
 
     </template>
 
