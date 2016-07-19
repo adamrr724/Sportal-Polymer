@@ -67,11 +67,10 @@
             <paper-dropdown-menu label="Event Type">
               <paper-listbox attr-for-selected="name"
                              class="dropdown-content"
-                             selected="pickup">
+                             selected={{eventTypeChange}}>
                 <paper-item name="pickup">Pickup Game</paper-item>
                 <paper-item name="league">League</paper-item>
                 <paper-item name="race">Run or Race</paper-item>
-                <paper-item name="place">Place to Play</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
           </div>
@@ -211,7 +210,15 @@
 
     Polymer({
 
-      is: 'sportal-create'
+      is: 'sportal-create',
+
+      properties: {
+
+        eventTypeChange: {
+          value: ""
+          
+        }
+      }
 
     });
 
