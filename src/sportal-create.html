@@ -1,5 +1,6 @@
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../src/elements.html">
 
 <dom-module id="sportal-create">
 
@@ -20,8 +21,12 @@
 
       <div class="create-form">
         <form is="iron-form" id="form" method="post" action="">
-          <paper-input name="name" label="name"></paper-input>
-          <input name="address">
+          <paper-input name="event-type" label="Event Type"></paper-input>
+          <paper-input name="name" label="Name"></paper-input>
+          <paper-input name="sport" label="Sport"></paper-input>
+          <paper-input name="date" label="Date"></paper-input>
+          <paper-input name="skill-level" label="Skill Level"></paper-input>
+          <paper-input name="notes" label="Notes"></paper-input>
         </form>
       </div>
 
