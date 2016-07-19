@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="../src/elements.html">
 
 <dom-module id="sportal-map">
 
@@ -9,7 +10,6 @@
         <style>
             :host {
                 display: block;
-                padding: 10px;
             }
 
             google-map {
@@ -18,15 +18,42 @@
 
             }
 
+            .map-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #filter-container {
+                flex: 1 0 0;
+                z-index: 1;
+                padding-left: 10px;
+                background-color: var(--light-sportal-blue);
+            }
+
+            #map-area {
+                flex: 6 0 0;
+            }
+
         </style>
 
-        <div>
-            <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
-                <google-map-marker latitude="37.779" longitude="-122.3892"
-                                   draggable="true" title="Go Giants!"></google-map-marker>
-                <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
-            </google-map>
-        </div>
+        <paper-card class="map-container">
+            <div elevation="1" id="filter-container">
+                <h4>Filters:</h4>
+                <h5>Event Type</h5>
+                <h5>Sport</h5>
+                <h5>Location</h5>
+                <h5>Skill Level</h5>
+                <h5>Age</h5>
+            </div>
+
+            <div id="map-area">
+                <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
+                    <google-map-marker latitude="37.779" longitude="-122.3892"
+                                       draggable="true" title="Go Giants!"></google-map-marker>
+                    <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+                </google-map>
+            </div>
+        </paper-card>
 
     </template>
 
