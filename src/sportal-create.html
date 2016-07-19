@@ -21,11 +21,61 @@
 
       <div class="create-form">
         <form is="iron-form" id="form" method="post" action="">
-          <paper-input name="event-type" label="Event Type"></paper-input>
-          <paper-input name="name" label="Name"></paper-input>
+          <paper-dropdown-menu label="Event Type">
+            <paper-listbox attr-for-selected="name"
+                           class="dropdown-content"
+                           selected="pickup">
+              <paper-item name="pickup">Pickup Game</paper-item>
+              <paper-item name="league">League</paper-item>
+              <paper-item name="race">Run or Race</paper-item>
+              <paper-item name="place">Place to Play</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-input name="name" label="Event Name"></paper-input>
           <paper-input name="sport" label="Sport"></paper-input>
+          <paper-dropdown-menu label="Will this be a recurring event?">
+            <paper-listbox attr-for-selected="value"
+                           class="dropdown-content"
+                           selected="0">
+              <paper-item value="0">No</paper-item>
+              <paper-item value="1">Yes</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-input name="reccurringDate" label="Reccurring Day of the Week"></paper-input>
           <paper-input name="date" label="Date"></paper-input>
-          <paper-input name="skill-level" label="Skill Level"></paper-input>
+          <paper-dropdown-menu label="Skill Level">
+            <paper-listbox attr-for-selected="value"
+                           class="dropdown-content"
+                           selected="all">
+              <paper-item value="all">All Skill Levels</paper-item>
+              <paper-item value="rookie">Rookies</paper-item>
+              <paper-item value="average">Bench Warmers</paper-item>
+              <paper-item value="pro">High School Heroes</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-dropdown-menu label="Age">
+            <paper-listbox attr-for-selected="value"
+                           class="dropdown-content"
+                           selected="all">
+              <paper-item value="all">All Ages</paper-item>
+              <paper-item value="young">Glory Days (Under 18)</paper-item>
+              <paper-item value="middle">Damn Millennial Generation (18-30)</paper-item>
+              <paper-item value="old">Seasoned Athletes (30+)</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-input name="website" label="Website"><div prefix>www.</div><div suffix>.com</div></paper-input>
+          <paper-input name="email" label="Contact Email"></paper-input>
+          <paper-input name="address" label="Address"></paper-input>
+          <paper-dropdown-menu label="Are there fees to join?">
+            <paper-listbox attr-for-selected="value"
+                           class="dropdown-content"
+                           selected="0">
+              <paper-item value="0">No</paper-item>
+              <paper-item value="1">Yes</paper-item>
+            </paper-listbox>
+          </paper-dropdown-menu>
+          <paper-input name="organization" label="Organization Name"></paper-input>
+          <paper-input name="image" label="Image Link"></paper-input>
           <paper-input name="notes" label="Notes"></paper-input>
         </form>
       </div>
