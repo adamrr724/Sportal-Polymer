@@ -1,5 +1,6 @@
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../src/elements.html">
 
 <dom-module id="sportal-home">
 
@@ -30,17 +31,18 @@
 
             .highlight-container {
                 display: flex;
-                flex-direction: row;
+                flex-wrap: wrap;
             }
 
             .highlight-card {
                 display: flex;
                 flex-direction: column;
-                width: 100%;
+                margin: 15px;
+                width: 45%;
             }
 
             .highlight {
-                flex-grow: 1;
+                padding: 15px;
                 text-align: center;
                 justify-content: center;
             }
@@ -48,43 +50,46 @@
         </style>
 
         <div>
-            <paper-card>
-                <div class="card-content">
-                    <img id="pickup-highlight" src="../images/main-image.jpeg" alt="">
-                </div>
-            </paper-card>
+            <div id="main-image">
+                <img id="pickup-highlight" src="../images/main-image.jpeg" alt="">
+            </div>
         </div>
 
         <div class="home-container">
 
-            <paper-card class="highlight-header-card">
+            <div class="highlight-header-card">
                 <div class="highlight-header">
                     <h1>Find the right sporting events for you. </h1>
                 </div>
-            </paper-card>
+            </div>
 
             <div class="highlight-container">
-                <paper-card class="highlight-card">
+                <paper-card elevation="2" class="highlight-card">
                     <div class="highlight">
                         <h3>Pickup</h3>
+                        <p>Want to play a sport without the cost and commitment of playing in a league? Check out all of
+                            the pickup style sporting events on the pickups page.</p>
                     </div>
                 </paper-card>
 
-                <paper-card class="highlight-card">
+                <paper-card elevation="2" class="highlight-card">
                     <div class="highlight">
                         <h3>Leagues</h3>
+                        <p>Missing the old days when Saturdays and Sundays of every week meant hitting the court or field? Check out the league page to get back into a routine playing your favorites!</p>
                     </div>
                 </paper-card>
 
-                <paper-card class="highlight-card">
+                <paper-card elevation="2" class="highlight-card">
                     <div class="highlight">
                         <h3>Runs and Races</h3>
+                        <p>Having that itch to race again? Or just want have a consistent running group? Check out the runs and races page to see all the events near you.</p>
                     </div>
                 </paper-card>
 
-                <paper-card class="highlight-card">
+                <paper-card elevation="2" class="highlight-card">
                     <div class="highlight">
                         <h3>Places to Play</h3>
+                        <p>Are you just needing to find a place nearby to practice? Check out our find a place to play page, and pick the perfect one for you.</p>
                     </div>
                 </paper-card>
 
