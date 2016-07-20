@@ -50,7 +50,7 @@
         min-width: 60%;
         text-align: center;
         color: whitesmoke;
-        text-shadow: 1px 1px 2px grey;
+        text-shadow: 1px 1px 2px #191919;
         background-color: var(--sportal-blue);
       }
       
@@ -161,10 +161,10 @@
               </paper-listbox>
             </paper-dropdown-menu>
             <paper-input required="true"  name="address" label="Address"></paper-input>
-            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
+            <paper-input required="true" type="email"  name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
-            <paper-button raised onclick="submitForm()">Submit</paper-button>
+            <paper-button raised onclick="_submitForm">Submit</paper-button>
           </div>
 
 
@@ -202,11 +202,11 @@
             </paper-dropdown-menu>
             <paper-input name="organization" label="Organization Name"></paper-input>
             <paper-input required="true"  name="address" label="Address"></paper-input>
-            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
+            <paper-input required="true" type="email"   name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-input name="website" label="Website"><div prefix>www.</div><div suffix>.com</div></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
-            <paper-button raised onclick="submitForm()">Submit</paper-button>
+            <paper-button raised onclick="_submitForm">Submit</paper-button>
           </div>
 
           <div id="race-form">
@@ -243,11 +243,11 @@
             </paper-dropdown-menu>
             <paper-input name="organization" label="Organization Name"></paper-input>
             <paper-input required="true"  name="address" label="Address"></paper-input>
-            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
+            <paper-input required="true" type="email"  name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-input name="website" label="Website"><div prefix>www.</div><div suffix>.com</div></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
-            <paper-button raised onclick="submitForm()">Submit</paper-button>
+            <paper-button raised onclick="_submitForm">Submit</paper-button>
           </div>
 
         </form>
@@ -285,6 +285,13 @@
           type: Boolean,
           value: false
         }
+
+      },
+
+      ready: function() {
+      },
+
+      _submitForm: function() {
       },
 
       _selectValue: function() {
@@ -305,8 +312,6 @@
           this.shadowRoot.querySelector('#race-form').style.display = 'block';
           this.valueSelected = true;
         }
-
-        console.log(this.recurring);
 
         if (this.recurring === "recurring-no") {
           console.log("no");
