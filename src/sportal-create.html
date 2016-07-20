@@ -37,16 +37,24 @@
         background-color: var(--material-green);
       }
       
-      .pickup-form{
+      #pickup-form{
         display: none;
       }
 
-      .league-form {
+      #league-form {
        display: none; 
       }
       
-      .race-form {
+      #race-form {
         display: none;
+      }
+
+      #rec-date {
+      display:none;
+      }
+
+      #reg-date {
+      display:none;
       }
 
     </style>
@@ -58,16 +66,22 @@
 
       <paper-card class="create-form">
 
-        <div class="starting-text">
+        <template is="dom-if" if="{{!valueSelected}}" class="starting-text">
           <p>Firstly, what event type are you hoping to add?</p>
-        </div>
+        </template>
+
+        <template is="dom-if" if="{{valueSelected}}" class="starting-text">
+          <p>Great! Now let's add a bit of detail.</p>
+        </template>
+
+
 
         <form is="iron-form" id="form" method="post" action="">
           <div id="event-type">
             <paper-dropdown-menu label="Event Type">
               <paper-listbox attr-for-selected="name"
                              class="dropdown-content"
-                             selected={{eventTypeChange}}>
+                             selected={{selected}}>
                 <paper-item name="pickup">Pickup Game</paper-item>
                 <paper-item name="league">League</paper-item>
                 <paper-item name="race">Run or Race</paper-item>
@@ -76,19 +90,39 @@
           </div>
 
 
-          <div class="pickup-form">
-            <paper-input name="name" label="Event Name"></paper-input>
-            <paper-input name="sport" label="Sport"></paper-input>
-            <paper-dropdown-menu label="Will this be a recurring event?">
+          <div id="pickup-form">
+            <paper-input required="true" name="name" label="Event Name"></paper-input>
+            <paper-input required="true"  name="sport" label="Sport"></paper-input>
+            <paper-dropdown-menu required="true"  label="Will this be a recurring event?">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
-                             selected="0">
-                <paper-item value="0">No</paper-item>
-                <paper-item value="1">Yes</paper-item>
+                             selected={{recurring}}>
+                <paper-item value="recurring-no">No</paper-item>
+                <paper-item value="recurring-yes">Yes</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-input name="reccurringDate" label="Reccurring Day of the Week"></paper-input>
-            <paper-input name="date" label="Date"></paper-input>
+
+            <div id="rec-date">
+              <paper-dropdown-menu label="Recurring Day of the Week">
+                <paper-listbox attr-for-selected="value"
+                               class="dropdown-content"
+                               selected="">
+                  <paper-item value="monday">Monday</paper-item>
+                  <paper-item value="tuesday">Tuesday</paper-item>
+                  <paper-item value="wednesday">Wednesday</paper-item>
+                  <paper-item value="thursday">Thursday</paper-item>
+                  <paper-item value="friday">Friday</paper-item>
+                  <paper-item value="saturday">Saturday</paper-item>
+                  <paper-item value="sunday">Sunday</paper-item>
+                </paper-listbox>
+              </paper-dropdown-menu>
+              <paper-input name="date" label="Starting Date"></paper-input>
+            </div>
+
+            <div id="reg-date">
+              <paper-input name="date" label="Date"></paper-input>
+            </div>
+
             <paper-dropdown-menu label="Skill Level">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
@@ -99,7 +133,7 @@
                 <paper-item value="pro">High School Heroes</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-dropdown-menu label="Age">
+            <paper-dropdown-menu required="true"  label="Age">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="all">
@@ -109,19 +143,19 @@
                 <paper-item value="old">Seasoned Athletes (30+)</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-input name="address" label="Address"></paper-input>
-            <paper-input name="email" label="Contact Email"></paper-input>
+            <paper-input required="true"  name="address" label="Address"></paper-input>
+            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
             <paper-button raised onclick="submitForm()">Submit</paper-button>
           </div>
 
 
-          <div class="league-form">
-            <paper-input name="name" label="Event Name"></paper-input>
-            <paper-input name="sport" label="Sport"></paper-input>
-            <paper-input name="date" label="Start Date"></paper-input>
-            <paper-dropdown-menu label="Skill Level">
+          <div id="league-form">
+            <paper-input required="true"  name="name" label="Event Name"></paper-input>
+            <paper-input required="true"  name="sport" label="Sport"></paper-input>
+            <paper-input required="true"  name="date" label="Start Date"></paper-input>
+            <paper-dropdown-menu required="true"  label="Skill Level">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="all">
@@ -131,7 +165,7 @@
                 <paper-item value="pro">High School Heroes</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-dropdown-menu label="Age">
+            <paper-dropdown-menu required="true"  label="Age">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="all">
@@ -141,7 +175,7 @@
                 <paper-item value="old">Seasoned Athletes (30+)</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-dropdown-menu label="Are there fees to join?">
+            <paper-dropdown-menu required="true"  label="Are there fees to join?">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="0">
@@ -150,19 +184,19 @@
               </paper-listbox>
             </paper-dropdown-menu>
             <paper-input name="organization" label="Organization Name"></paper-input>
-            <paper-input name="address" label="Address"></paper-input>
-            <paper-input name="email" label="Contact Email"></paper-input>
+            <paper-input required="true"  name="address" label="Address"></paper-input>
+            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-input name="website" label="Website"><div prefix>www.</div><div suffix>.com</div></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
             <paper-button raised onclick="submitForm()">Submit</paper-button>
           </div>
 
-          <div class="race-form">
-            <paper-input name="name" label="Event Name"></paper-input>
-            <paper-input name="sport" label="Sport"></paper-input>
-            <paper-input name="date" label="Event Date"></paper-input>
-            <paper-dropdown-menu label="Skill Level">
+          <div id="race-form">
+            <paper-input required="true"  name="name" label="Event Name"></paper-input>
+            <paper-input required="true"  name="sport" label="Sport"></paper-input>
+            <paper-input required="true"  name="date" label="Event Date"></paper-input>
+            <paper-dropdown-menu required="true"  label="Skill Level">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="all">
@@ -172,7 +206,7 @@
                 <paper-item value="pro">High School Heroes</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-dropdown-menu label="Age">
+            <paper-dropdown-menu required="true"  label="Age">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="all">
@@ -182,7 +216,7 @@
                 <paper-item value="old">Seasoned Athletes (30+)</paper-item>
               </paper-listbox>
             </paper-dropdown-menu>
-            <paper-dropdown-menu label="Are there fees to join?">
+            <paper-dropdown-menu required="true"  label="Are there fees to join?">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected="0">
@@ -191,8 +225,8 @@
               </paper-listbox>
             </paper-dropdown-menu>
             <paper-input name="organization" label="Organization Name"></paper-input>
-            <paper-input name="address" label="Address"></paper-input>
-            <paper-input name="email" label="Contact Email"></paper-input>
+            <paper-input required="true"  name="address" label="Address"></paper-input>
+            <paper-input required="true"  name="email" label="Contact Email"></paper-input>
             <paper-input name="image" label="Image Link"></paper-input>
             <paper-input name="website" label="Website"><div prefix>www.</div><div suffix>.com</div></paper-input>
             <paper-textarea name="notes" label="Notes"></paper-textarea>
@@ -212,13 +246,62 @@
 
       is: 'sportal-create',
 
+      behaviors: [
+        Polymer.IronMenuBehavior
+      ],
+
+      listeners: {
+        "iron-select" : "_selectValue"
+      },
+
       properties: {
 
-        eventTypeChange: {
+        selected: {
           value: ""
-          
+        },
+
+        recurring: {
+          value: ""
+        },
+
+        valueSelected: {
+          type: Boolean,
+          value: false
+        }
+      },
+
+      _selectValue: function() {
+
+        if (this.selected === "pickup") {
+          this.shadowRoot.querySelector('#league-form').style.display = 'none';
+          this.shadowRoot.querySelector('#race-form').style.display = 'none';
+          this.shadowRoot.querySelector('#pickup-form').style.display = 'block';
+          this.valueSelected = true;
+        } else if (this.selected === "league") {
+          this.shadowRoot.querySelector('#race-form').style.display = 'none';
+          this.shadowRoot.querySelector('#pickup-form').style.display = 'none';
+          this.shadowRoot.querySelector('#league-form').style.display = 'block';
+          this.valueSelected = true;
+        } else if (this.selected === "race") {
+          this.shadowRoot.querySelector('#pickup-form').style.display = 'none';
+          this.shadowRoot.querySelector('#league-form').style.display = 'none';
+          this.shadowRoot.querySelector('#race-form').style.display = 'block';
+          this.valueSelected = true;
+        }
+
+        console.log(this.recurring);
+
+        if (this.recurring === "recurring-no") {
+          console.log("no");
+          this.shadowRoot.querySelector('#rec-date').style.display = 'none';
+          this.shadowRoot.querySelector('#reg-date').style.display = 'block';
+        } else if (this.recurring === "recurring-yes") {
+          console.log("yes");
+          this.shadowRoot.querySelector('#rec-date').style.display = 'block';
+          this.shadowRoot.querySelector('#reg-date').style.display = 'none';
         }
       }
+
 
     });
 
