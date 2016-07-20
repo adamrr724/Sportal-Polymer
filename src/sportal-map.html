@@ -44,16 +44,34 @@
                 <h5>Location</h5>
                 <h5>Skill Level</h5>
                 <h5>Age</h5>
+                <template is="dom-repeat" items="{{ajax}}">
+                    <h5>{{item.address.lng}}</h5>
+                </template>
             </div>
 
             <div id="map-area">
-                <google-map latitude="37.77493" longitude="-122.41942" fit-to-markers>
-                    <google-map-marker latitude="37.779" longitude="-122.3892"
-                                       draggable="true" title="Go Giants!"></google-map-marker>
-                    <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+                <google-map fit-to-markers
+                            single-info-window=true
+                            zoom=10>
+                    <template is="dom-repeat" items="{{ajax}}">
+                        <google-map-marker latitude="{{item.address.lat}}"
+                                           longitude="{{item.address.lng}}">
+                        </google-map-marker>
+                    </template>
                 </google-map>
             </div>
         </paper-card>
+
+        <iron-ajax id="eventGet"
+                   auto
+                   url="http://localhost:3000/api/Events"
+                   handle-as="json"
+                   on-response="_onResponse"
+                   on-error="_onError"
+                   content-type="application/json"
+                   debounce-duration="500"
+                   method="GET"
+        ></iron-ajax>
 
     </template>
 
@@ -61,8 +79,28 @@
 
         Polymer({
 
-            is: 'sportal-map'
+            is: 'sportal-map',
 
+            properties: {
+
+                route: Object,
+
+                ajax: {
+                    type: Object
+                }
+
+            },
+
+            _onResponse: function (data) {
+                this.ajax = data.detail.response;
+                console.log(this.ajax);
+                console.log(this.ajax[0].address.lat);
+                console.log(this.ajax[0].address.lng);
+            },
+
+            _onError: function (e) {
+
+            }
         });
 
     </script>
