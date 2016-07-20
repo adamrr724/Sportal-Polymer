@@ -20,6 +20,16 @@
         width: 250px;
       }
 
+      paper-button {
+        background-color: var(--sportal-blue);
+        margin: 10px;
+      }
+
+      paper-button:hover {
+        background-color: grey;
+      }
+
+
       .header-text {
         font-size: 25px;;
       }
@@ -36,9 +46,12 @@
       }
 
       .create-header {
-        width: 100%;
+        padding: 25px;
+        min-width: 60%;
         text-align: center;
-        background-color: var(--material-green);
+        color: whitesmoke;
+        text-shadow: 1px 1px 2px grey;
+        background-color: var(--sportal-blue);
       }
       
       #pickup-form{
@@ -63,19 +76,19 @@
 
     </style>
     <div class="create-container">
-      <paper-card class="create-header">
+      <paper-card elevation="3" class="create-header">
         <p class="header-text">Create an Event</p>
         <p>Add your game, league, run, race, or place to play to our page!</p>
       </paper-card>
 
-      <paper-card class="create-form">
+      <paper-card elevation="3" class="create-form">
 
         <template is="dom-if" if="{{!valueSelected}}" class="starting-text">
           <p>Firstly, what event type are you hoping to add?</p>
         </template>
 
         <template is="dom-if" if="{{valueSelected}}" class="starting-text">
-          <p>Great! Now let's add a bit of detail.</p>
+          <p>Great! Thanks for that. Now let's add a bit of detail.</p>
         </template>
 
 
@@ -95,9 +108,9 @@
 
 
           <div id="pickup-form">
-            <paper-input required="true" name="name" label="Event Name"></paper-input>
+            <paper-input required="true" name="name" label="Pickup Name"></paper-input>
             <paper-input required="true"  name="sport" label="Sport"></paper-input>
-            <paper-dropdown-menu required="true"  label="Will this be a recurring event?">
+            <paper-dropdown-menu required="true"     style="min-width: 250px"  label="Will this be a recurring event?">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
                              selected={{recurring}}>
@@ -107,7 +120,7 @@
             </paper-dropdown-menu>
 
             <div id="rec-date">
-              <paper-dropdown-menu label="Recurring Day of the Week">
+              <paper-dropdown-menu style="min-width: 250px" label="Recurring Day of the Week">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
                                selected="">
@@ -120,11 +133,11 @@
                   <paper-item value="sunday">Sunday</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
-              <paper-input name="date" label="Starting Date"></paper-input>
+              <paper-input name="date" type="date" label="Starting Date"></paper-input>
             </div>
 
             <div id="reg-date">
-              <paper-input name="date" label="Date"></paper-input>
+              <paper-input name="date" type="date" label="Date"></paper-input>
             </div>
 
             <paper-dropdown-menu label="Skill Level">
@@ -156,9 +169,9 @@
 
 
           <div id="league-form">
-            <paper-input required="true"  name="name" label="Event Name"></paper-input>
+            <paper-input required="true"  name="name" label="League Name"></paper-input>
             <paper-input required="true"  name="sport" label="Sport"></paper-input>
-            <paper-input required="true"  name="date" label="Start Date"></paper-input>
+            <paper-input required="true" type="date"  name="date" label="Start Date"></paper-input>
             <paper-dropdown-menu required="true"  label="Skill Level">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
@@ -199,7 +212,7 @@
           <div id="race-form">
             <paper-input required="true"  name="name" label="Event Name"></paper-input>
             <paper-input required="true"  name="sport" label="Sport"></paper-input>
-            <paper-input required="true"  name="date" label="Event Date"></paper-input>
+            <paper-input required="true" type="date"  name="date" label="Event Date"></paper-input>
             <paper-dropdown-menu required="true"  label="Skill Level">
               <paper-listbox attr-for-selected="value"
                              class="dropdown-content"
