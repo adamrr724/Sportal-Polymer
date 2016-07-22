@@ -18,7 +18,7 @@
 
             }
 
-            .map-container {
+            #map-container {
                 display: flex;
                 flex-direction: row;
             }
@@ -27,7 +27,6 @@
                 flex: 1 0 0;
                 z-index: 1;
                 padding-left: 10px;
-                background-color: var(--light-sportal-blue);
             }
 
             #map-area {
@@ -36,7 +35,7 @@
 
         </style>
 
-        <paper-card class="map-container">
+        <paper-card id="map-container">
             <div elevation="1" id="filter-container">
                 <h4>Filters:</h4>
                 <h5>Event Type</h5>
@@ -44,13 +43,17 @@
                 <h5>Location</h5>
                 <h5>Skill Level</h5>
                 <h5>Age</h5>
-                <template is="dom-repeat" items="{{ajax}}">
-                    <h5>{{item.address.lng}}</h5>
-                </template>
+                <!--<template is="dom-repeat" items="{{ajax}}">-->
+                    <!--<h5>{{item.address.lng}}</h5>-->
+                    <!--<h5>{{potato}}</h5>-->
+
+                <!--</template>-->
             </div>
+
 
             <div id="map-area">
                 <google-map fit-to-markers
+                            api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg"
                             single-info-window=true
                             zoom=10>
                     <template is="dom-repeat" items="{{ajax}}">
@@ -87,15 +90,19 @@
 
                 ajax: {
                     type: Object
+                },
+
+                mapData : {
+                    type: Object
                 }
 
             },
 
             _onResponse: function (data) {
                 this.ajax = data.detail.response;
+
                 console.log(this.ajax);
-                console.log(this.ajax[0].address.lat);
-                console.log(this.ajax[0].address.lng);
+
             },
 
             _onError: function (e) {

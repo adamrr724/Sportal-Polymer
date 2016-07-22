@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2844f780-2865-4f1b-b757-455ce0b7e20a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/elements.html" afterPath="$PROJECT_DIR$/src/elements.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/main-image.jpeg" afterPath="$PROJECT_DIR$/images/main-image.jpeg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-create.html" afterPath="$PROJECT_DIR$/src/sportal-create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-home.html" afterPath="$PROJECT_DIR$/src/sportal-home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-map.html" afterPath="$PROJECT_DIR$/src/sportal-map.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-polymer.html" afterPath="$PROJECT_DIR$/src/sportal-polymer.html" />
     </list>
     <ignored path="Sportal-Polymer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sportal-home.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sportal-home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sportal-home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="115" column="28" selection-start-line="112" selection-start-column="19" selection-end-line="115" selection-end-column="28" />
+            <state relative-caret-position="561">
+              <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -70,8 +71,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="43" />
+            <state relative-caret-position="135">
+              <caret line="9" column="78" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -80,8 +81,8 @@
       <file leaf-file-name="sportal-polymer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportal-polymer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+            <state relative-caret-position="-846">
+              <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -104,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sportal-map.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sportal-map.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportal-map.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+            <state relative-caret-position="630">
+              <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -117,8 +118,8 @@
       <file leaf-file-name="sportal-create.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportal-create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="320" column="19" selection-start-line="320" selection-start-column="19" selection-end-line="320" selection-end-column="19" />
+            <state relative-caret-position="1575">
+              <caret line="417" column="10" selection-start-line="417" selection-start-column="10" selection-end-line="417" selection-end-column="79" />
               <folding>
                 <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
@@ -151,11 +152,11 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/sportal-find.html" />
         <option value="$PROJECT_DIR$/bower.json" />
-        <option value="$PROJECT_DIR$/src/sportal-home.html" />
-        <option value="$PROJECT_DIR$/src/sportal-polymer.html" />
-        <option value="$PROJECT_DIR$/src/sportal-create.html" />
         <option value="$PROJECT_DIR$/src/elements.html" />
+        <option value="$PROJECT_DIR$/src/sportal-create.html" />
+        <option value="$PROJECT_DIR$/src/sportal-polymer.html" />
         <option value="$PROJECT_DIR$/src/sportal-map.html" />
+        <option value="$PROJECT_DIR$/src/sportal-home.html" />
       </list>
     </option>
   </component>
@@ -297,12 +298,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468858725214</updated>
-      <workItem from="1468858727075" duration="43569000" />
+      <workItem from="1468858727075" duration="49815000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43569000" />
+    <option name="totallyTimeSpent" value="49815000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -444,33 +445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportal-home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="115" column="28" selection-start-line="112" selection-start-column="19" selection-end-line="115" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sportal-create.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="320" column="19" selection-start-line="320" selection-start-column="19" selection-end-line="320" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/elements.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -479,18 +453,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="78" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-polymer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+        <state relative-caret-position="-846">
+          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-map.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="729">
-          <caret line="88" column="32" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+        <state relative-caret-position="630">
+          <caret line="91" column="31" selection-start-line="91" selection-start-column="31" selection-end-line="91" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportal-create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1575">
+          <caret line="417" column="10" selection-start-line="417" selection-start-column="10" selection-end-line="417" selection-end-column="79" />
+          <folding>
+            <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#0;n#div#1;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sportal-home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="67" column="13" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="13" />
           <folding />
         </state>
       </provider>
