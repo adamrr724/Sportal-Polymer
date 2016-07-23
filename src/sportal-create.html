@@ -258,7 +258,7 @@
       <iron-ajax id="eventPost"
                  url="http://localhost:3000/api/Events"
                  handle-as="json"
-                 body="_ajaxBody"
+                 body="[[ajaxBody]]"
                  on-error="_onError"
                  content-type="application/json"
                  method="POST"
@@ -334,52 +334,11 @@
         },
         website: {
           value: ""
+        },
+
+        ajaxBody: {
+          type: Object
         }
-
-//        ajaxBody: {
-//          type: Object,
-//          value: {
-//                    "name": "test",
-//                    "sport": "test",
-//                    "recurring": 0,
-//                    "date": "2016-07-12",
-//                    "recurringDate": "test",
-//                    "notes": "test",
-//                    "age": "test",
-//                    "fees": 0,
-//                    "skillLevel": "test",
-//                    "image": "test",
-//                    "address": {
-//                      "lat": 45.5231,
-//                      "lng": -122.678
-//                    },
-//                    "organization": "test",
-//                    "email": "test",
-//                    "website": "test"
-//                  }
-//
-////                  {
-////                  "name": this.eventName,
-////                  "sport": this.sport,
-////                  "recurring": this.recurringSubmit,
-////                  "date": this.date,
-////                  "recurringDate": this.dayOfWeek,
-////                  "notes": this.notes,
-////                  "age": this.age,
-////                  "fees": this.fees,
-////                  "skillLevel": this.skillLevel,
-////                  "image": this.image,
-////                  "address": {
-////                    "lat": 0,
-////                    "lng": 0
-////                  },
-////                  "organization": this.organization,
-////                  "email": this.email,
-////                  "website": this.website
-////                  }
-//        }
-
-
       },
 
       ready: function() {
@@ -387,13 +346,61 @@
 
       _submitRace: function() {
 
+        this.ajaxBody =  {
+          "eventType": this.eventType,
+          "name": this.eventName,
+          "sport": this.sport,
+          "recurring": this.recurringSubmit,
+          "date": this.date,
+          "recurringDate": this.dayOfWeek,
+          "notes": this.notes,
+          "age": this.age,
+          "fees": this.fees,
+          "skillLevel": this.skillLevel,
+          "image": this.image,
+          "address": {
+            "lat": 45.5233,
+            "lng": -122.6764
+          },
+          "organization": this.organization,
+          "email": this.email,
+          "website": this.website
+        };
+
 
         this.$.eventPost.generateRequest();
+
+        alert("Your race has been created!");
+        this._clearValues();
       },
 
       _submitLeague: function() {
 
+        this.ajaxBody =  {
+          "eventType": this.eventType,
+          "name": this.eventName,
+          "sport": this.sport,
+          "recurring": this.recurringSubmit,
+          "date": this.date,
+          "recurringDate": this.dayOfWeek,
+          "notes": this.notes,
+          "age": this.age,
+          "fees": this.fees,
+          "skillLevel": this.skillLevel,
+          "image": this.image,
+          "address": {
+            "lat": 45.5233,
+            "lng": -122.6764
+          },
+          "organization": this.organization,
+          "email": this.email,
+          "website": this.website
+        };
+
         this.$.eventPost.generateRequest();
+
+        alert("Your league has been created!");
+        this._clearValues();
       },
 
       _submitPickup: function() {
@@ -404,29 +411,31 @@
           this.recurringSubmit = 1;
         }
 
-        this.$.eventPost.generateRequest();
-      },
+        this.ajaxBody =  {
+          "eventType": this.eventType,
+          "name": this.eventName,
+          "sport": this.sport,
+          "recurring": this.recurringSubmit,
+          "date": this.date,
+          "recurringDate": this.dayOfWeek,
+          "notes": this.notes,
+          "age": this.age,
+          "fees": this.fees,
+          "skillLevel": this.skillLevel,
+          "image": this.image,
+          "address": {
+            "lat": 45.5233,
+            "lng": -122.6764
+          },
+          "organization": this.organization,
+          "email": this.email,
+          "website": this.website
+        };
 
-      _ajaxBody: function () {
-        return {
-                  "name": this.eventName,
-                  "sport": this.sport,
-                  "recurring": this.recurringSubmit,
-                  "date": this.date,
-                  "recurringDate": this.dayOfWeek,
-                  "notes": this.notes,
-                  "age": this.age,
-                  "fees": this.fees,
-                  "skillLevel": this.skillLevel,
-                  "image": this.image,
-                  "address": {
-                    "lat": 0,
-                    "lng": 0
-                  },
-                  "organization": this.organization,
-                  "email": this.email,
-                  "website": this.website
-                  }
+        this.$.eventPost.generateRequest();
+
+        alert("Your pickup game has been created!");
+        this._clearValues();
       },
 
       _onError: function(error) {
@@ -463,7 +472,8 @@
       },
 
       _clearValues: function() {
-        this.name = "";
+        this.eventType = "";
+        this.eventName = "";
         this.sport = "";
         this.date = "";
         this.recurring = "";

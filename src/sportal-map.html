@@ -72,6 +72,9 @@
                             <template is="dom-repeat" items=[[ajaxResponse]]>
                                 <google-map-marker latitude=[[item.address.lat]]
                                                    longitude=[[item.address.lng]]>
+                                    <h4>[[item.name]]</h4>
+                                    <h5>[[item.sport]]</h5>
+                                    <h5>[[item.skillLevel]]</h5>
                                 </google-map-marker>
                             </template>
                         </google-map>
