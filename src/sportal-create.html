@@ -379,16 +379,16 @@
           "website": this.website
         };
 
-        if(!this.$.form.validate()) {
-          console.log(this.$.form.validate());
-          alert("You have errors, please try again.");
-        } else {
+//        if(!this.$.form.validate()) {
+//          console.log(this.$.form.validate());
+//          alert("You have errors, please try again.");
+//        } else {
 
         this.$.eventPost.generateRequest();
 
         alert("Your pickup game has been created!");
         window.location.reload();
-        }
+//        }
 
       },
 
