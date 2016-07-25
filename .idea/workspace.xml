@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2844f780-2865-4f1b-b757-455ce0b7e20a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-create.html" afterPath="$PROJECT_DIR$/src/sportal-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-map.html" afterPath="$PROJECT_DIR$/src/sportal-map.html" />
     </list>
     <ignored path="Sportal-Polymer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -117,8 +116,8 @@
       <file leaf-file-name="sportal-create.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sportal-create.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="517" column="77" selection-start-line="517" selection-start-column="77" selection-end-line="517" selection-end-column="77" />
+            <state relative-caret-position="192">
+              <caret line="252" column="101" selection-start-line="252" selection-start-column="101" selection-end-line="252" selection-end-column="101" />
               <folding>
                 <element signature="n#style#0;n#paper-dropdown-menu#1;n#div#0;n#template#0;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#1;n#div#0;n#template#0;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
@@ -303,12 +302,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468858725214</updated>
-      <workItem from="1468858727075" duration="72254000" />
+      <workItem from="1468858727075" duration="72599000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72254000" />
+    <option name="totallyTimeSpent" value="72599000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -502,8 +501,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-create.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="517" column="77" selection-start-line="517" selection-start-column="77" selection-end-line="517" selection-end-column="77" />
+        <state relative-caret-position="192">
+          <caret line="252" column="101" selection-start-line="252" selection-start-column="101" selection-end-line="252" selection-end-column="101" />
           <folding>
             <element signature="n#style#0;n#paper-dropdown-menu#1;n#div#0;n#template#0;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#paper-dropdown-menu#0;n#div#1;n#div#0;n#template#0;n#form#0;n#paper-card#1;n#div#0;n#template#0;n#dom-module#0;n#!!top" expanded="true" />
