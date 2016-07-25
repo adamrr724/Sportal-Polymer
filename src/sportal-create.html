@@ -61,6 +61,10 @@
       #reg-date {
       display:none;
       }
+      
+      .other-input {
+        display: none;
+      }
 
     </style>
     <div class="create-container">
@@ -97,7 +101,32 @@
           <template is="dom-if" if="{{isPickup}}">
             <div id="pickup-form">
               <paper-input required auto-validate="true" error-message="Please enter an event name!" value="{{eventName}}" name="name" label="Pickup Name"></paper-input>
-              <paper-input required auto-validate="true" error-message="Please enter an sport!" value="{{sport}}"  name="sport" label="Sport"></paper-input>
+              <paper-dropdown-menu  label="Sport">
+                <paper-listbox attr-for-selected="value"
+                               class="dropdown-content"
+                               fallback-selection=""
+                               selected="{{sport}}">
+                  <paper-item value="Baseball">Baseball</paper-item>
+                  <paper-item value="Basketball">Basketball</paper-item>
+                  <paper-item value="Field Hockey">Field Hockey</paper-item>
+                  <paper-item value="Football">Football</paper-item>
+                  <paper-item value="Futsal">Futsal</paper-item>
+                  <paper-item value="Ice Hockey">Ice Hockey</paper-item>
+                  <paper-item value="Kickball">Kickball</paper-item>
+                  <paper-item value="Lacrosse">Lacrosse</paper-item>
+                  <paper-item value="Soccer">Soccer</paper-item>
+                  <paper-item value="Softball">Softball</paper-item>
+                  <paper-item value="Ultimate Frisbee">Ultimate Frisbee</paper-item>
+                  <paper-item value="Tennis">Tennis</paper-item>
+                  <paper-item value="Volleyball">Volleyball</paper-item>
+                  <paper-item value="other">Other</paper-item>
+                </paper-listbox>
+              </paper-dropdown-menu>
+
+              <div class="other-input">
+                <paper-input value="{{otherSport}}" name="other" label="Other Sport Name"></paper-input>
+              </div>
+
               <paper-dropdown-menu required     style="min-width: 250px"  label="Will this be a recurring event?">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
@@ -112,13 +141,13 @@
                   <paper-listbox attr-for-selected="value"
                                  class="dropdown-content"
                                  selected="{{dayOfWeek}}">
-                    <paper-item value="monday">Monday</paper-item>
-                    <paper-item value="tuesday">Tuesday</paper-item>
-                    <paper-item value="wednesday">Wednesday</paper-item>
-                    <paper-item value="thursday">Thursday</paper-item>
-                    <paper-item value="friday">Friday</paper-item>
-                    <paper-item value="saturday">Saturday</paper-item>
-                    <paper-item value="sunday">Sunday</paper-item>
+                    <paper-item value="Monday">Monday</paper-item>
+                    <paper-item value="Tuesday">Tuesday</paper-item>
+                    <paper-item value="Wednesday">Wednesday</paper-item>
+                    <paper-item value="Thursday">Thursday</paper-item>
+                    <paper-item value="Fiday">Friday</paper-item>
+                    <paper-item value="Saturday">Saturday</paper-item>
+                    <paper-item value="Sunday">Sunday</paper-item>
                   </paper-listbox>
                 </paper-dropdown-menu>
                 <paper-input name="date" required auto-validate="true" value="{{date}}" type="date" label="Starting Date"></paper-input>
@@ -131,21 +160,23 @@
               <paper-dropdown-menu required label="Skill Level">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Skill Levels"
                                selected="{{skillLevel}}">
-                  <paper-item value="all">All Skill Levels</paper-item>
-                  <paper-item value="rookie">Rookies</paper-item>
-                  <paper-item value="average">Bench Warmers</paper-item>
-                  <paper-item value="pro">High School Heroes</paper-item>
+                  <paper-item value="All Skill Levels">All Skill Levels</paper-item>
+                  <paper-item value="Rookies">Rookies</paper-item>
+                  <paper-item value="Bench Warmers">Bench Warmers</paper-item>
+                  <paper-item value="High School Heroes">High School Heroes</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-dropdown-menu required label="Age">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Ages"
                                selected="{{age}}">
-                  <paper-item value="all">All Ages</paper-item>
-                  <paper-item value="young">Glory Days (Under 18)</paper-item>
-                  <paper-item value="middle">Damn Millennial Generation (18-30)</paper-item>
-                  <paper-item value="old">Seasoned Athletes (30+)</paper-item>
+                  <paper-item value="All Ages">All Ages</paper-item>
+                  <paper-item value="Glory Days (Under 18)">Glory Days (Under 18)</paper-item>
+                  <paper-item value="Darn Millennials (18-30)">Darn Millennials (18-30)</paper-item>
+                  <paper-item value="Seasoned Athletes (30+)">Seasoned Athletes (30+)</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-input required auto-validate="true" value="{{address}}"  name="address" label="Address"></paper-input>
@@ -158,29 +189,56 @@
           <template is="dom-if" if="{{isLeague}}">
             <div id="league-form">
               <paper-input required auto-validate="true" value="{{eventName}}"  name="name" label="League Name"></paper-input>
-              <paper-input required auto-validate="true" value="{{sport}}"  name="sport" label="Sport"></paper-input>
+              <paper-dropdown-menu label="Sport">
+                <paper-listbox attr-for-selected="value"
+                               class="dropdown-content"
+                               fallback-selection=""
+                               selected="{{sport}}">
+                  <paper-item value="Baseball">Baseball</paper-item>
+                  <paper-item value="Basketball">Basketball</paper-item>
+                  <paper-item value="Field Hockey">Field Hockey</paper-item>
+                  <paper-item value="Football">Football</paper-item>
+                  <paper-item value="Futsal">Futsal</paper-item>
+                  <paper-item value="Ice Hockey">Ice Hockey</paper-item>
+                  <paper-item value="Kickball">Kickball</paper-item>
+                  <paper-item value="Lacrosse">Lacrosse</paper-item>
+                  <paper-item value="Soccer">Soccer</paper-item>
+                  <paper-item value="Softball">Softball</paper-item>
+                  <paper-item value="Ultimate Frisbee">Ultimate Frisbee</paper-item>
+                  <paper-item value="Tennis">Tennis</paper-item>
+                  <paper-item value="Volleyball">Volleyball</paper-item>
+                  <paper-item value="other">Other</paper-item>
+                </paper-listbox>
+              </paper-dropdown-menu>
+
+              <div class="other-input">
+                <paper-input value="{{otherSport}}" name="other" label="Other Sport Name"></paper-input>
+              </div>
+
               <paper-input required auto-validate="true" value="{{date}}" type="date"  name="date" label="Start Date"></paper-input>
               <paper-dropdown-menu required  label="Skill Level">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Skill Levels"
                                selected="{{skillLevel}}">
-                  <paper-item value="all">All Skill Levels</paper-item>
-                  <paper-item value="rookie">Rookies</paper-item>
-                  <paper-item value="average">Bench Warmers</paper-item>
-                  <paper-item value="pro">High School Heroes</paper-item>
+                  <paper-item value="All Skill Levels">All Skill Levels</paper-item>
+                  <paper-item value="Rookies">Rookies</paper-item>
+                  <paper-item value="Bench Warmers">Bench Warmers</paper-item>
+                  <paper-item value="High School Heroes">High School Heroes</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-dropdown-menu required  label="Age">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Ages"
                                selected="{{age}}">
-                  <paper-item value="all">All Ages</paper-item>
-                  <paper-item value="young">Glory Days (Under 18)</paper-item>
-                  <paper-item value="middle">Damn Millennial Generation (18-30)</paper-item>
-                  <paper-item value="old">Seasoned Athletes (30+)</paper-item>
+                  <paper-item value="All Ages">All Ages</paper-item>
+                  <paper-item value="Glory Days (Under 18)">Glory Days (Under 18)</paper-item>
+                  <paper-item value="Darn Millennials (18-30)">Damn Millennial Generation (18-30)</paper-item>
+                  <paper-item value="Seasoned Athletes (30+)">Seasoned Athletes (30+)</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
-              <paper-dropdown-menu required label="Are there fees to join?">
+              <paper-dropdown-menu label="Are there fees to join?">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
                                selected="{{fees}}">
@@ -200,29 +258,51 @@
           <template is="dom-if" if="{{isRace}}">
             <div id="race-form">
               <paper-input required auto-validate="true" value="{{eventName}}"  name="name" label="Event Name"></paper-input>
-              <paper-input required auto-validate="true" value="{{sport}}"  name="sport" label="Sport"></paper-input>
+              <paper-dropdown-menu  label="Sport">
+                <paper-listbox attr-for-selected="value"
+                               class="dropdown-content"
+                               fallback-selection=""
+                               selected="{{sport}}">
+                  <paper-item value="Road Bike Race">Road Bike Race</paper-item>
+                  <paper-item value="Mountain Bike Race">Mountain Bike Race</paper-item>
+                  <paper-item value="Triathlon">Triathlon</paper-item>
+                  <paper-item value="Biathlon">Biathlon</paper-item>
+                  <paper-item value="Marathon">Marathon</paper-item>
+                  <paper-item value="Charity Run">Charity Run</paper-item>
+                  <paper-item value="Trail Run">Trail Run</paper-item>
+                  <paper-item value="Obstacle Run">Obstacle Run</paper-item>
+                  <paper-item value="other">Other</paper-item>
+                </paper-listbox>
+              </paper-dropdown-menu>
+
+              <div class="other-input">
+                <paper-input value="{{otherSport}}" name="other" label="Other Sport Name"></paper-input>
+              </div>
+
               <paper-input required auto-validate="true" value="{{date}}" type="date"  name="date" label="Event Date"></paper-input>
               <paper-dropdown-menu required  label="Skill Level">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Skill Levels"
                                selected="{{skillLevel}}">
-                  <paper-item value="all">All Skill Levels</paper-item>
-                  <paper-item value="rookie">Rookies</paper-item>
-                  <paper-item value="average">Bench Warmers</paper-item>
-                  <paper-item value="pro">High School Heroes</paper-item>
+                  <paper-item value="All Skill Levels">All Skill Levels</paper-item>
+                  <paper-item value="Rookies">Rookies</paper-item>
+                  <paper-item value="Bench Warmers">Bench Warmers</paper-item>
+                  <paper-item value="High School Heroes">High School Heroes</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-dropdown-menu required  label="Age">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
+                               fallback-selection="All Ages"
                                selected="{{age}}">
-                  <paper-item value="all">All Ages</paper-item>
-                  <paper-item value="young">Glory Days (Under 18)</paper-item>
-                  <paper-item value="middle">Damn Millennial Generation (18-30)</paper-item>
-                  <paper-item value="old">Seasoned Athletes (30+)</paper-item>
+                  <paper-item value="All Ages">All Ages</paper-item>
+                  <paper-item value="Glory Days (Under 18)">Glory Days (Under 18)</paper-item>
+                  <paper-item value="Darn Millennials (18-30)">Damn Millennial Generation (18-30)</paper-item>
+                  <paper-item value="Seasoned Athletes (30+)">Seasoned Athletes (30+)</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
-              <paper-dropdown-menu required  label="Are there fees to join?">
+              <paper-dropdown-menu label="Are there fees to join?">
                 <paper-listbox attr-for-selected="value"
                                class="dropdown-content"
                                selected="{{fees}}">
@@ -268,7 +348,8 @@
       ],
 
       listeners: {
-        "iron-select" : "_selectValue"
+        "iron-select" : "_selectValue",
+        "iron-form-error" : "_onFormError"
       },
 
       properties: {
@@ -326,6 +407,9 @@
         website: {
           value: ""
         },
+        otherSport: {
+          value: ""
+        },
 
         isPickup: {
           type: Boolean,
@@ -358,6 +442,10 @@
           this.recurringSubmit = 1;
         }
 
+        if (this.sport === "other") {
+          this.sport = this.otherSport;
+        }
+
         this.ajaxBody =  {
           "eventType": this.eventType,
           "name": this.eventName,
@@ -379,22 +467,21 @@
           "website": this.website
         };
 
-//        if(!this.$.form.validate()) {
-//          console.log(this.$.form.validate());
-//          alert("You have errors, please try again.");
-//        } else {
+      if(!this.$.form.validate()) {
+          console.log(this.$.form.validate());
+          alert("You have errors, please try again.");
+        } else {
+          console.log(this.ajaxBody);
+          alert("stop");
+          this.$.eventPost.generateRequest();
 
-        this.$.eventPost.generateRequest();
-
-        alert("Your pickup game has been created!");
-        window.location.reload();
-//        }
+          alert("Your pickup game has been created!");
+          window.location.reload();
+        }
 
       },
 
       _onError: function(error) {
-        console.log("error");
-        console.log(error);
       },
 
       _selectValue: function() {
@@ -423,6 +510,13 @@
           this.shadowRoot.querySelector('#rec-date').style.display = 'block';
           this.shadowRoot.querySelector('#reg-date').style.display = 'none';
         }
+
+
+        if (this.sport === "other") {
+          this.shadowRoot.querySelector('.other-input').style.display = 'block';
+        } else {
+          this.shadowRoot.querySelector('.other-input').style.display = 'none';
+        }
       },
 
       _clearValues: function() {
@@ -441,6 +535,9 @@
         this.notes = "";
         this.image = "";
         this.website = "";
+      },
+
+      _onFormError: function (e) {
       }
 
 
