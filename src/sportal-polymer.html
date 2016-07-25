@@ -136,6 +136,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right: 5px;
       }
 
+      #facebook-sign-in {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .sign-ins {
+        text-align: center;
+        width: 300px;
+      }
+
 
 
     </style>
@@ -196,8 +206,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                       graph-response="{{resp}}"
                       auto-api-call></facebook-login>
               </div>
+              <h3>Or</h3>
               <div id="google-sign-in">
-
+                <google-signin client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
               </div>
 
             </div>
