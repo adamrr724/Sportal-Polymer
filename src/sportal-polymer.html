@@ -120,6 +120,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         min-height: 100px;;
       }
 
+      #facebook-button {
+        color: white;
+        background-color: #3B5998;
+        margin-bottom: 5px;
+      }
+
+      #google-button {
+        color: white;
+        background-color: #dd4b39;
+      }
+
+      .media-icon {
+        height: 25px;
+        margin-right: 5px;
+      }
+
 
 
     </style>
@@ -143,8 +159,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="events" href="/events">My Events</a>
         </iron-selector>
         <div id="sign-in-buttons">
-          <paper-button raised on-click="_modalOpen">Sign In With Facebook</paper-button>
-          <paper-button raised on-click="_modalOpen" >Sign In With Google</paper-button>
+          <paper-button id="facebook-button" raised on-click="_modalOpen"><img class="media-icon" src="../images/facebook-white.png">Sign In With Facebook</paper-button>
+          <paper-button id="google-button" raised on-click="_modalOpen" ><img class="media-icon" src="../images/google-white.png">Sign In With Google</paper-button>
         </div>
       </app-drawer>
 
