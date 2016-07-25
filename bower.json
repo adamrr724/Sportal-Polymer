@@ -26,7 +26,8 @@
     "rxjs": "^4.1.0",
     "google-map": "GoogleWebComponents/google-map#^1.1.10",
     "moment": "^2.13.0",
-    "numeral": "^1.5.3"
+    "numeral": "^1.5.3",
+    "facebook-login": "*"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

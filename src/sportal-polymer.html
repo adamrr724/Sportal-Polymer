@@ -36,6 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: var(--background-color);
       }
 
+
       iron-pages {
         padding: 0;
         margin: 0;
@@ -57,6 +58,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .menu-drawer {
         box-shadow: 1px 0 8px 0 lightgrey;
+        position: flex;
+      }
+
+      #sign-in-buttons {
+        display: flex;
+        flex-direction: column;
+        align-self: flex-end;
       }
 
       .drawer-list {
@@ -76,6 +84,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .drawer-list a.subroute {
         padding-left: 32px;
       }
+
+      .close-icon {
+        height: 30px;
+        width: 30px;
+      }
+
+      .close-button {
+        margin: 0;
+        padding: 0;
+        min-width: 50px;
+        min-height: 50px;
+      }
+
+      .close-div {
+        float: right;
+        display: inline;
+        margin: 0;
+        padding: 0;
+      }
+
+      .text-close {
+        border: .5px solid #12377e;
+        border-radius: 0;
+        margin: 5px;
+      }
+
+      .sign-in-modal {
+        padding: 25px;
+        max-height: 400px;
+        max-width: 600px;
+      }
+
+      paper-dialog {
+        min-height: 100px;;
+      }
+
 
 
     </style>
@@ -98,6 +142,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="create" href="/create">Create</a>
           <a name="events" href="/events">My Events</a>
         </iron-selector>
+        <div id="sign-in-buttons">
+          <paper-button raised on-click="_modalOpen">Sign In With Facebook</paper-button>
+          <paper-button raised on-click="_modalOpen" >Sign In With Google</paper-button>
+        </div>
       </app-drawer>
 
       <!-- Main content -->
@@ -121,6 +169,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     </app-drawer-layout>
 
+    <paper-dialog class="sign-in-modal" autoFitOnAttach="true" opened={{modalOpen}} modal="true">
+        <h1>Sign In!</h1>
+            <div class="sign-ins">
+              <div id="facebook-sign-in">
+                <facebook-login
+                      appID="1048953065212430"
+                      logout-link graph-url="me?fields=name,email,birthday"
+                      scope="public_profile email user_birthday"
+                      graph-response="{{resp}}"
+                      auto-api-call></facebook-login>
+              </div>
+              <div id="google-sign-in">
+
+              </div>
+
+            </div>
+      <div class="buttons">
+        <paper-button class="text-close" on-Click="_modalClose" autofocus><strong>Close</strong></paper-button>
+      </div>
+    </paper-dialog>
+
   </template>
 
   <script>
@@ -137,11 +206,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           observer: '_pageChanged'
         },
 
+        modalOpen: {
+          type: Boolean,
+          value: ""
+        }
+
       },
 
       observers: [
         '_routePageChanged(routeData.page)'
       ],
+
+      _modalClose: function () {
+        this.modalOpen = false;
+      },
+
+      _modalOpen: function () {
+        this.modalOpen = true;
+      },
 
       _routePageChanged: function(page) {
         this.page = page || 'home';
