@@ -29,8 +29,12 @@
                 padding-left: 10px;
             }
 
+            .filter-dropdown {
+                width: 90%;
+            }
+
             #map-area {
-                flex: 4 0 0;
+                flex: 5 0 0;
             }
 
         </style>
@@ -52,7 +56,7 @@
                 <paper-card id="map-container">
                     <div elevation="1" id="filter-container">
                         <h4>Filters:</h4>
-                        <paper-dropdown-menu label="Event Type">
+                        <paper-dropdown-menu class="filter-dropdown" label="Event Type">
                             <paper-listbox attr-for-selected="name"
                                            class="dropdown-content"
                                            selected={{eventType}}>
