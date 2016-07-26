@@ -30,13 +30,13 @@
             }
 
             #map-area {
-                flex: 6 0 0;
+                flex: 4 0 0;
             }
 
         </style>
         <iron-ajax id="eventGet"
                    auto
-                   url="http://localhost:3000/api/Events"
+                   url="{{requestUrl}}"
                    handle-as="json"
                    on-error="_onError"
                    on-response="_onResponse"
@@ -52,9 +52,17 @@
                 <paper-card id="map-container">
                     <div elevation="1" id="filter-container">
                         <h4>Filters:</h4>
-                        <h5>Event Type</h5>
-                        <h5>Sport</h5>
+                        <paper-dropdown-menu label="Event Type">
+                            <paper-listbox attr-for-selected="name"
+                                           class="dropdown-content"
+                                           selected={{eventType}}>
+                                <paper-item name="pickup">Pickup Game</paper-item>
+                                <paper-item name="league">League</paper-item>
+                                <paper-item name="race">Run or Race</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
                         <h5>Location</h5>
+                        <h5>Sport</h5>
                         <h5>Skill Level</h5>
                         <h5>Age</h5>
                         <!--<template is="dom-repeat" items="{{ajax}}">-->
@@ -102,12 +110,30 @@
 
             is: 'sportal-map',
 
+            behaviors: [
+                Polymer.IronMenuBehavior
+            ],
+
+            listeners: {
+                "iron-select" : "_selectedFilter"
+            },
+
+
             properties: {
 
                 route: Object,
 
                 ajaxResponse: {
                     type: Object
+                },
+
+                requestUrl: {
+                    type: String,
+                    value: "http://localhost:3000/api/Events"
+                },
+
+                eventType: {
+                    value: ""
                 }
 
             },
@@ -126,6 +152,17 @@
 //                map.addEventListener('dom-change', function() {
 //                    console.log("dom has changed");
 //                });
+            },
+
+            _selectedFilter: function() {
+                var baseUrl = "http://localhost:3000/api/Events";
+
+
+                var newUrl = baseUrl + "?filter[where][eventType]=" + this.eventType;
+                this.requestUrl = newUrl;
+                console.log(this.requestUrl);
+
+                this.$.eventGet.generateRequest();
             }
 //
 //            _lastResponse: function (data) {
