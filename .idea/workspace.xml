@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2844f780-2865-4f1b-b757-455ce0b7e20a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-map.html" afterPath="$PROJECT_DIR$/src/sportal-map.html" />
-    </list>
+    <list default="true" id="2844f780-2865-4f1b-b757-455ce0b7e20a" name="Default" comment="" />
     <ignored path="Sportal-Polymer.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -93,7 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sportal-map.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sportal-map.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sportal-map.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
@@ -103,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="google-map-marker.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="google-map-marker.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bower_components/google-map/google-map-marker.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            <state relative-caret-position="1965">
+              <caret line="467" column="9" selection-start-line="467" selection-start-column="9" selection-end-line="467" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -156,8 +154,8 @@
         <option value="$PROJECT_DIR$/src/sportal-polymer.html" />
         <option value="$PROJECT_DIR$/src/sportal-home.html" />
         <option value="$PROJECT_DIR$/src/sportal-create.html" />
-        <option value="$PROJECT_DIR$/bower_components/google-map/google-map-marker.html" />
         <option value="$PROJECT_DIR$/src/sportal-map.html" />
+        <option value="$PROJECT_DIR$/bower_components/google-map/google-map-marker.html" />
       </list>
     </option>
   </component>
@@ -309,12 +307,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468858725214</updated>
-      <workItem from="1468858727075" duration="93445000" />
+      <workItem from="1468858727075" duration="93813000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93445000" />
+    <option name="totallyTimeSpent" value="93813000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -533,18 +531,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/google-map/google-map-marker.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-map.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/google-map/google-map-marker.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1965">
+          <caret line="467" column="9" selection-start-line="467" selection-start-column="9" selection-end-line="467" selection-end-column="9" />
           <folding />
         </state>
       </provider>
