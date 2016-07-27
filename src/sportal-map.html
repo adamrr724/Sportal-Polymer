@@ -139,9 +139,11 @@
                                 <google-map-marker map="{{map}}"
                                                    latitude=[[item.address.lat]]
                                                    longitude=[[item.address.lng]]>
-                                    <h4>[[item.name]]</h4>
-                                    <h5>[[item.sport]]</h5>
-                                    <h5>[[item.skillLevel]]</h5>
+                                    <div>
+                                        <h4>[[item.name]]</h4>
+                                        <h5>[[item.sport]]</h5>
+                                        <h5>[[item.skillLevel]]</h5>
+                                    </div>
                                 </google-map-marker>
                             </template>
                         </google-map>
@@ -206,14 +208,14 @@
 
             },
 //
-//            attached: function () {
-//                console.log(this.$.map);
-//                console.log(this.ajaxResponse);
-//            },
+            attached: function () {
+
+            },
 
             _onResponse: function (e) {
-
                 this.ajaxResponse = e.detail.response;
+
+                console.log(this.ajaxResponse);
 
 //
 //                map.addEventListener('dom-change', function() {
@@ -283,6 +285,7 @@
 //
 //            }
         });
+
 
     </script>
 
