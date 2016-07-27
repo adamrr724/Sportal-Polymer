@@ -215,7 +215,6 @@
 
                 this.ajaxResponse = e.detail.response;
 
-                console.log(this.ajaxResponse);
 //
 //                map.addEventListener('dom-change', function() {
 //                    console.log("dom has changed");
@@ -229,6 +228,7 @@
 
 
                 var withFilter = baseUrl + "?";
+                var count = "";
 
                 var eventTypeFilter = "filter[where][eventType]=" + this.eventType;
                 var sportFilter = "filter[where][sport]=" + this.sport;
@@ -238,14 +238,26 @@
 
                 if (this.eventType) {
                     withFilter += eventTypeFilter;
+                    count += 1;
                 }
                 if (this.sport) {
+                    if (count > 0) {
+                        withFilter += "&";
+                    }
                     withFilter += sportFilter;
+                    count += 1;
                 }
                 if (this.skillLevel) {
+                    if (count > 0) {
+                        withFilter += "&";
+                    }
                     withFilter += skillLevelFilter;
+                    count += 1;
                 }
                 if (this.age) {
+                    if (count > 0) {
+                        withFilter += "&";
+                    }
                     withFilter += ageFilter;
                 }
 
