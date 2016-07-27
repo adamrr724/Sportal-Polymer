@@ -442,14 +442,11 @@
           this.recurringSubmit = 1;
         }
 
-        if (this.sport === "other") {
-          this.sport = this.otherSport;
-        }
-
         this.ajaxBody =  {
           "eventType": this.eventType,
           "name": this.eventName,
           "sport": this.sport,
+          "otherSport": this.otherSport,
           "recurring": this.recurringSubmit,
           "date": this.date,
           "recurringDate": this.dayOfWeek,
@@ -459,8 +456,8 @@
           "skillLevel": this.skillLevel,
           "image": this.image,
           "address": {
-            "lat": 45.5228,
-            "lng": -122.6762
+            "lat": 45.52334,
+            "lng": -122.6776
           },
           "organization": this.organization,
           "email": this.email,
@@ -523,6 +520,7 @@
         this.eventType = "";
         this.eventName = "";
         this.sport = "";
+        this.otherSport = "";
         this.date = "";
         this.recurring = "";
         this.dayOfWeek = "";

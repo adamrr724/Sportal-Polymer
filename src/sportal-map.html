@@ -29,12 +29,12 @@
                 padding-left: 10px;
             }
 
-            .filter-dropdown {
-                width: 90%;
-            }
-
             #map-area {
                 flex: 5 0 0;
+            }
+
+            .filters {
+                width: 90%;
             }
 
         </style>
@@ -55,8 +55,9 @@
             <template is="dom-if" if="{{ajaxResponse}}">
                 <paper-card id="map-container">
                     <div elevation="1" id="filter-container">
+                        <div class="filters">
                         <h4>Filters:</h4>
-                        <paper-dropdown-menu class="filter-dropdown" label="Event Type">
+                        <paper-dropdown-menu label="Event Type">
                             <paper-listbox attr-for-selected="name"
                                            class="dropdown-content"
                                            selected={{eventType}}>
@@ -65,16 +66,69 @@
                                 <paper-item name="race">Run or Race</paper-item>
                             </paper-listbox>
                         </paper-dropdown-menu>
+
+                        <paper-dropdown-menu  label="Sport">
+                            <paper-listbox attr-for-selected="value"
+                                           class="dropdown-content"
+                                           fallback-selection=""
+                                           selected="{{sport}}">
+                                <paper-item value="Baseball">Baseball</paper-item>
+                                <paper-item value="Basketball">Basketball</paper-item>
+                                <paper-item value="Field Hockey">Field Hockey</paper-item>
+                                <paper-item value="Football">Football</paper-item>
+                                <paper-item value="Futsal">Futsal</paper-item>
+                                <paper-item value="Ice Hockey">Ice Hockey</paper-item>
+                                <paper-item value="Kickball">Kickball</paper-item>
+                                <paper-item value="Lacrosse">Lacrosse</paper-item>
+                                <paper-item value="Soccer">Soccer</paper-item>
+                                <paper-item value="Softball">Softball</paper-item>
+                                <paper-item value="Ultimate Frisbee">Ultimate Frisbee</paper-item>
+                                <paper-item value="Tennis">Tennis</paper-item>
+                                <paper-item value="Volleyball">Volleyball</paper-item>
+                                <paper-item value="Road Bike Race">Road Bike Race</paper-item>
+                                <paper-item value="Mountain Bike Race">Mountain Bike Race</paper-item>
+                                <paper-item value="Triathlon">Triathlon</paper-item>
+                                <paper-item value="Biathlon">Biathlon</paper-item>
+                                <paper-item value="Marathon">Marathon</paper-item>
+                                <paper-item value="Charity Run">Charity Run</paper-item>
+                                <paper-item value="Trail Run">Trail Run</paper-item>
+                                <paper-item value="Obstacle Run">Obstacle Run</paper-item>
+                                <paper-item value="other">Other</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+
+                        <paper-dropdown-menu  label="Skill Level">
+                            <paper-listbox attr-for-selected="value"
+                                           class="dropdown-content"
+                                           selected="{{skillLevel}}">
+                                <paper-item value="All Skill Levels">All Skill Levels</paper-item>
+                                <paper-item value="Rookies">Rookies</paper-item>
+                                <paper-item value="Bench Warmers">Bench Warmers</paper-item>
+                                <paper-item value="High School Heroes">High School Heroes</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+
+                        <paper-dropdown-menu required  label="Age">
+                            <paper-listbox attr-for-selected="value"
+                                           class="dropdown-content"
+                                           selected="{{age}}">
+                                <paper-item value="All Ages">All Ages</paper-item>
+                                <paper-item value="Glory Days (Under 18)">Glory Days (Under 18)</paper-item>
+                                <paper-item value="Darn Millennials (18-30)">Damn Millennial Generation (18-30)</paper-item>
+                                <paper-item value="Seasoned Athletes (30+)">Seasoned Athletes (30+)</paper-item>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+
                         <h5>Location</h5>
-                        <h5>Sport</h5>
-                        <h5>Skill Level</h5>
-                        <h5>Age</h5>
+                        </div>
+
                         <!--<template is="dom-repeat" items="{{ajax}}">-->
                             <!--<h5>{{item.address.lng}}</h5>-->
                         <!--</template>-->
                     </div>
                     <div id="map-area">
-                        <google-map id="map"
+                        <google-map id="pageMap"
+                                    map="{{map}}"
                                     fit-to-markers
                                     api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg"
                                     single-info-window="true"
@@ -82,7 +136,8 @@
                                     longitude="-122.67"
                                     zoom="10">
                             <template is="dom-repeat" items=[[ajaxResponse]]>
-                                <google-map-marker latitude=[[item.address.lat]]
+                                <google-map-marker map="{{map}}"
+                                                   latitude=[[item.address.lat]]
                                                    longitude=[[item.address.lng]]>
                                     <h4>[[item.name]]</h4>
                                     <h5>[[item.sport]]</h5>
@@ -138,6 +193,15 @@
 
                 eventType: {
                     value: ""
+                },
+                sport: {
+                    value: ""
+                },
+                skillLevel: {
+                    value: ""
+                },
+                age: {
+                    value: ""
                 }
 
             },
@@ -148,22 +212,49 @@
 //            },
 
             _onResponse: function (e) {
+
                 this.ajaxResponse = e.detail.response;
 
                 console.log(this.ajaxResponse);
-//                var map = this.$.map;
 //
 //                map.addEventListener('dom-change', function() {
 //                    console.log("dom has changed");
 //                });
             },
 
+
             _selectedFilter: function() {
+
                 var baseUrl = "http://localhost:3000/api/Events";
 
 
-                var newUrl = baseUrl + "?filter[where][eventType]=" + this.eventType;
-                this.requestUrl = newUrl;
+                var withFilter = baseUrl + "?";
+
+                var eventTypeFilter = "filter[where][eventType]=" + this.eventType;
+                var sportFilter = "filter[where][sport]=" + this.sport;
+                var skillLevelFilter = "filter[where][skillLevel]=" + this.skillLevel;
+                var ageFilter = "filter[where][age]=" + this.age;
+
+
+                if (this.eventType) {
+                    withFilter += eventTypeFilter;
+                }
+                if (this.sport) {
+                    withFilter += sportFilter;
+                }
+                if (this.skillLevel) {
+                    withFilter += skillLevelFilter;
+                }
+                if (this.age) {
+                    withFilter += ageFilter;
+                }
+
+                if (this.eventType || this.sport || this.skillLevel || this.age) {
+                    this.requestUrl = withFilter;
+                } else {
+                    this.requestUrl = baseUrl;
+                }
+
                 console.log(this.requestUrl);
 
                 this.$.eventGet.generateRequest();
