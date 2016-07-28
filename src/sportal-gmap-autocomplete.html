@@ -13,7 +13,7 @@
 
         <google-maps-api id="maps" api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg" libraries="places" on-api-load="on_api_load"></google-maps-api>
 
-        <paper-input id="input" class="input" type="text" value="{{value}}" label="Search Location"></paper-input>
+        <paper-input id="input" class="input" type="text" label="Search Location"></paper-input>
     </template>
 </dom-module>
 <script>
@@ -33,8 +33,11 @@
                 value: function () { return {}; },
                 notify: true
             },
-            locationObject: {
-                type: Object
+            location: {
+                type: Object,
+                notify: true,
+                readOnly: true,
+                value: ""
             }
         },
         on_api_load: function () {
@@ -48,7 +51,10 @@
             }
             this.value = this.place.formatted_address;
 
-            this.locationObject = this.place;
-        }
+            this._setLocation(this.place);
+
+            console.log(this.location);
+        },
+
     });
 </script>

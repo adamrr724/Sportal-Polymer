@@ -20,6 +20,11 @@
 
             }
 
+            paper-button {
+                background-color: var(--sportal-blue);
+                margin: 10px;
+            }
+
             #map-container {
                 display: flex;
                 flex-direction: row;
@@ -125,8 +130,10 @@
                             </paper-listbox>
                         </paper-dropdown-menu>
 
-                        <sportal-gmap-autocomplete location-object="{{locationObject}}"></sportal-gmap-autocomplete>
-
+                        <iron-form is="iron-form" id="form">
+                            <sportal-gmap-autocomplete location="{{locationData}}"></sportal-gmap-autocomplete>
+                            <paper-button raised on-click="_submitForm">Submit</paper-button>
+                        </iron-form>
                         <!--<paper-input name="location" value="{{locationSelection}}" label="Search Location"></paper-input>-->
 
 
@@ -185,12 +192,15 @@
 
             behaviors: [
                 Polymer.IronMenuBehavior,
-                Polymer.IronFormElementBehavior
+                Polymer.IronFormElementBehavior,
+                Polymer.IronA11yKeysBehavior,
+                Polymer.PaperInputBehavior,
+                Polymer.IronSelectableBehavior,
+                Polymer.IronControlState
             ],
 
             listeners: {
-                "iron-select" : "_selectedFilter",
-                "change": "_inputChange"
+                "iron-select" : "_selectedFilter"
             },
 
 
@@ -229,15 +239,15 @@
                 locationSelection: {
                     value: ""
                 },
-                location: {
-                    value: ""
-                },
                 searchResults: {
                     type: Array
                 },
                 locationInput: {
                     type: String,
                     value: ""
+                },
+                locationData: {
+                    type: Object
                 }
 
             },
@@ -261,10 +271,12 @@
 //                });
             },
 
-            _inputChange() {
-//                console.log(this.locationSelection);
-//                this.query = this.locationSelection;
+            _inputChange: function() {
+//                console.log(this.location);
+            },
 
+            _submitForm: function() {
+                console.log(this.locationData);
             },
 
 
