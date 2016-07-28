@@ -132,7 +132,7 @@
 
                         <iron-form is="iron-form" id="form">
                             <sportal-gmap-autocomplete location="{{locationData}}"></sportal-gmap-autocomplete>
-                            <paper-button raised on-click="_submitForm">Submit</paper-button>
+                            <paper-button raised on-click="_selectedFilter">Submit</paper-button>
                         </iron-form>
                         <!--<paper-input name="location" value="{{locationSelection}}" label="Search Location"></paper-input>-->
 
@@ -276,7 +276,7 @@
             },
 
             _submitForm: function() {
-                console.log(this.locationData);
+//                console.log(this.locationData);
             },
 
 
@@ -285,14 +285,14 @@
                 var baseUrl = "";
                 var withFilter = "";
 
-                console.log(this.latitude);
-                console.log(this.longitude);
-
                 var currentLocationQuery = "?filter[where][address][near]=" + this.latitude + "," + this.longitude + "&filter[lt]=50";
 
-                if (this.locationSelection) {
+                if (this.locationData) {
                     baseUrl = "http://localhost:3000/api/Events";
                     withFilter = baseUrl + "?";
+                    this.latitude = this.locationData.geometry.location.lat();
+                    this.longitude = this.locationData.geometry.location.lng();
+                    this.locationSelection = this.latitude + "," + this.longitude;
                 } else {
                     baseUrl = "http://localhost:3000/api/Events" + currentLocationQuery;
                     withFilter = baseUrl + "&";
