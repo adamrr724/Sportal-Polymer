@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
+<link rel="import" href="../bower_components/geo-location/geo-location.html">
 <link rel="import" href="../src/elements.html">
 
 <dom-module id="sportal-map">
@@ -38,6 +39,7 @@
             }
 
         </style>
+
         <iron-ajax id="eventGet"
                    auto
                    url="{{requestUrl}}"
@@ -50,6 +52,9 @@
                    withCredentials
         ></iron-ajax>
 
+
+        <geo-location latitude="{{latitude}}"
+                      longitude="{{longitude}}"></geo-location>
 
 
             <template is="dom-if" if="{{ajaxResponse}}">
@@ -132,9 +137,8 @@
                                     fit-to-markers
                                     api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg"
                                     single-info-window="true"
-                                    latitude="45.5"
-                                    longitude="-122.67"
-                                    zoom="10">
+                                    latitude="{{latitude}}"
+                                    longitude="{{longitude}}">
                             <template is="dom-repeat" items=[[ajaxResponse]]>
                                 <google-map-marker map="{{map}}"
                                                    latitude=[[item.address.lat]]
@@ -148,8 +152,8 @@
                             </template>
                         </google-map>
                     </div>
+                </paper-card>
             </template>
-        </paper-card>
 
 
         <!--<iron-ajax id="eventGet"-->
@@ -187,12 +191,16 @@
                 ajaxResponse: {
                     type: Object
                 },
-
+                latitude: {
+                    value: ""
+                },
+                longitude: {
+                    value: ""
+                },
                 requestUrl: {
                     type: String,
                     value: "http://localhost:3000/api/Events"
                 },
-
                 eventType: {
                     value: ""
                 },
@@ -204,8 +212,18 @@
                 },
                 age: {
                     value: ""
+                },
+                currentLocation: {
+                    value: ""
+                },
+                locationSelection: {
+                    value: ""
                 }
 
+            },
+
+            ready: function() {
+//                this.currentLocation = new GeoPoint({lat: this.latitude, lng: this.longitude});
             },
 //
             attached: function () {
@@ -226,21 +244,35 @@
 
             _selectedFilter: function() {
 
-                var baseUrl = "http://localhost:3000/api/Events";
+                var baseUrl = "";
+                var withFilter = "";
 
+                console.log(this.latitude);
+                console.log(this.longitude);
 
-                var withFilter = baseUrl + "?";
+                var currentLocationQuery = "?filter[where][address][near]=" + this.latitude + "," + this.longitude + "&filter[limit]=3";
+
+                if (this.locationSelection) {
+                    baseUrl = "http://localhost:3000/api/Events";
+                    withFilter = baseUrl + "?";
+                } else {
+                    baseUrl = "http://localhost:3000/api/Events" + currentLocationQuery;
+                    withFilter = baseUrl + "&";
+                }
+
                 var count = "";
 
                 var eventTypeFilter = "filter[where][eventType]=" + this.eventType;
                 var sportFilter = "filter[where][sport]=" + this.sport;
                 var skillLevelFilter = "filter[where][skillLevel]=" + this.skillLevel;
                 var ageFilter = "filter[where][age]=" + this.age;
+                var locationSelectFilter = "filter[where][address][near]=" + this.locationSelection + "&filter[limit]=3";
 
 
                 if (this.eventType) {
                     withFilter += eventTypeFilter;
                     count += 1;
+                    this.selectionMade = true;
                 }
                 if (this.sport) {
                     if (count > 0) {
@@ -248,6 +280,7 @@
                     }
                     withFilter += sportFilter;
                     count += 1;
+                    this.selectionMade = true;
                 }
                 if (this.skillLevel) {
                     if (count > 0) {
@@ -255,19 +288,30 @@
                     }
                     withFilter += skillLevelFilter;
                     count += 1;
+                    this.selectionMade = true;
                 }
                 if (this.age) {
                     if (count > 0) {
                         withFilter += "&";
                     }
                     withFilter += ageFilter;
+                    count += 1;
+                    this.selectionMade = true;
+                }
+                if (this.locationSelection) {
+                    if (count > 0) {
+                        withFilter += "&";
+                    }
+                    withFilter += locationSelectFilter;
+                    this.selectionMade = true;
                 }
 
-                if (this.eventType || this.sport || this.skillLevel || this.age) {
+                if (this.eventType || this.sport || this.skillLevel || this.age || this.locationSelection) {
                     this.requestUrl = withFilter;
                 } else {
                     this.requestUrl = baseUrl;
                 }
+
 
                 console.log(this.requestUrl);
 
