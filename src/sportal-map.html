@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-search.html">
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
 <link rel="import" href="../bower_components/geo-location/geo-location.html">
 <link rel="import" href="../src/elements.html">
@@ -124,7 +125,12 @@
                             </paper-listbox>
                         </paper-dropdown-menu>
 
-                        <h5>Location</h5>
+                        <sportal-gmap-autocomplete location-object="{{locationObject}}"></sportal-gmap-autocomplete>
+
+                        <!--<paper-input name="location" value="{{locationSelection}}" label="Search Location"></paper-input>-->
+
+
+
                         </div>
 
                         <!--<template is="dom-repeat" items="{{ajax}}">-->
@@ -132,11 +138,13 @@
                         <!--</template>-->
                     </div>
                     <div id="map-area">
+                        <!--<google-map-search global-search="true" map="[[map]]" query="{{query}}" location="{{location}}" results="{{searchResults}}"></google-map-search>-->
                         <google-map id="pageMap"
                                     map="{{map}}"
                                     fit-to-markers
                                     api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg"
                                     single-info-window="true"
+                                    zoom="12"
                                     latitude="{{latitude}}"
                                     longitude="{{longitude}}">
                             <template is="dom-repeat" items=[[ajaxResponse]]>
@@ -176,11 +184,13 @@
             is: 'sportal-map',
 
             behaviors: [
-                Polymer.IronMenuBehavior
+                Polymer.IronMenuBehavior,
+                Polymer.IronFormElementBehavior
             ],
 
             listeners: {
-                "iron-select" : "_selectedFilter"
+                "iron-select" : "_selectedFilter",
+                "change": "_inputChange"
             },
 
 
@@ -218,6 +228,16 @@
                 },
                 locationSelection: {
                     value: ""
+                },
+                location: {
+                    value: ""
+                },
+                searchResults: {
+                    type: Array
+                },
+                locationInput: {
+                    type: String,
+                    value: ""
                 }
 
             },
@@ -241,6 +261,12 @@
 //                });
             },
 
+            _inputChange() {
+//                console.log(this.locationSelection);
+//                this.query = this.locationSelection;
+
+            },
+
 
             _selectedFilter: function() {
 
@@ -250,7 +276,7 @@
                 console.log(this.latitude);
                 console.log(this.longitude);
 
-                var currentLocationQuery = "?filter[where][address][near]=" + this.latitude + "," + this.longitude + "&filter[limit]=3";
+                var currentLocationQuery = "?filter[where][address][near]=" + this.latitude + "," + this.longitude + "&filter[lt]=50";
 
                 if (this.locationSelection) {
                     baseUrl = "http://localhost:3000/api/Events";
@@ -266,7 +292,7 @@
                 var sportFilter = "filter[where][sport]=" + this.sport;
                 var skillLevelFilter = "filter[where][skillLevel]=" + this.skillLevel;
                 var ageFilter = "filter[where][age]=" + this.age;
-                var locationSelectFilter = "filter[where][address][near]=" + this.locationSelection + "&filter[limit]=3";
+                var locationSelectFilter = "filter[where][address][near]=" + this.locationSelection + "&filter[lt]=50";
 
 
                 if (this.eventType) {

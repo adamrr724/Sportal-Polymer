@@ -29,7 +29,8 @@
     "numeral": "^1.5.3",
     "facebook-login": "*",
     "google-signin": "GoogleWebComponents/google-signin#^1.3.6",
-    "geo-location": "^1.0.5"
+    "geo-location": "^1.0.5",
+    "google-apis": "GoogleWebComponents/google-apis#^1.1.6"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

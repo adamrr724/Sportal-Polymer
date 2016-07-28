@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-apis/google-maps-api.html">
+<dom-module id="sportal-gmap-autocomplete">
+    <style>
+        :host {
+            display: inline-block;
+        }
+        #input{
+            @apply(--input-location);
+        }
+    </style>
+    <template>
+
+        <google-maps-api id="maps" api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg" libraries="places" on-api-load="on_api_load"></google-maps-api>
+
+        <paper-input id="input" class="input" type="text" value="{{value}}" label="Search Location"></paper-input>
+    </template>
+</dom-module>
+<script>
+    Polymer({
+        is: 'sportal-gmap-autocomplete',
+        properties: {
+            value: {
+                type: String,
+                notify: true
+            },
+            options: {
+                type: Object,
+                value: function () { return {}; }
+            },
+            place: {
+                type: Object,
+                value: function () { return {}; },
+                notify: true
+            },
+            locationObject: {
+                type: Object
+            }
+        },
+        on_api_load: function () {
+            this.autocomplete = new google.maps.places.Autocomplete(this.$.input, this.options);
+            google.maps.event.addListener(this.autocomplete, 'place_changed', this.on_change_place.bind(this));
+        },
+        on_change_place: function () {
+            this.place = this.autocomplete.getPlace();
+            if (!this.place.address_components) {
+                return;
+            }
+            this.value = this.place.formatted_address;
+
+            this.locationObject = this.place;
+        }
+    });
+</script>
