@@ -158,6 +158,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       }
 
+      #sign-in-container {
+        position: absolute;
+        bottom: 20px;
+        left:5px;
+      }
+
 
 
     </style>
@@ -183,20 +189,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </template>
         </iron-selector>
 
-        <template is="dom-if" if="{{pageReady}}">
-          <template is="dom-if" if="{{!signedIn}}">
-            <div id="sign-in-buttons">
-              <paper-button id="facebook-button" raised on-click="_modalOpen"><img class="media-icon" src="../images/facebook-white.png">Sign In With Facebook</paper-button>
-              <paper-button id="google-button" raised on-click="_modalOpen" ><img class="media-icon" src="../images/google-white.png">Sign In With Google</paper-button>
-            </div>
-          </template>
-
-          <template is="dom-if" if="{{signedIn}}">
-            <div id="google-sign-in">
-              <google-signin raised signed-in="{{signedIn}}" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
-            </div>
-          </template>
-        </template>
 
       </app-drawer>
 
@@ -250,6 +242,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-button class="text-close" on-Click="_modalClose" autofocus><strong>Close</strong></paper-button>
       </div>
     </paper-dialog>
+
+    <div id="sign-in-container">
+      <template is="dom-if" if="{{pageReady}}">
+        <template is="dom-if" if="{{!signedIn}}">
+          <div id="sign-in-buttons">
+            <paper-button id="facebook-button" raised on-click="_modalOpen"><img class="media-icon" src="../images/facebook-white.png">Sign In With Facebook</paper-button>
+            <paper-button id="google-button" raised on-click="_modalOpen" ><img class="media-icon" src="../images/google-white.png">Sign In With Google</paper-button>
+          </div>
+        </template>
+
+        <template is="dom-if" if="{{signedIn}}">
+          <div id="google-sign-in">
+            <google-signin raised signed-in="{{signedIn}}" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
+          </div>
+        </template>
+      </template>
+      </div>
 
     <template is="dom-if" if="{{signedIn}}">
       <img class="profileImage" src="{{userImage}}">
