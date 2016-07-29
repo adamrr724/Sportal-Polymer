@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2844f780-2865-4f1b-b757-455ce0b7e20a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-create.html" afterPath="$PROJECT_DIR$/src/sportal-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-gmap-autocomplete-create.html" afterPath="$PROJECT_DIR$/src/sportal-gmap-autocomplete-create.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-map.html" afterPath="$PROJECT_DIR$/src/sportal-map.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/elements.html" afterPath="$PROJECT_DIR$/src/elements.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sportal-polymer.html" afterPath="$PROJECT_DIR$/src/sportal-polymer.html" />
     </list>
     <ignored path="Sportal-Polymer.iws" />
@@ -32,8 +28,8 @@
       <file leaf-file-name="elements.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/elements.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
+            <state relative-caret-position="189">
+              <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -62,7 +58,7 @@
       <file leaf-file-name="google-signin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bower_components/google-signin/google-signin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4110">
+            <state relative-caret-position="-5205">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -72,8 +68,8 @@
       <file leaf-file-name="sportal-polymer.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sportal-polymer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="279" column="27" selection-start-line="279" selection-start-column="27" selection-end-line="279" selection-end-column="27" />
+            <state relative-caret-position="294">
+              <caret line="155" column="15" selection-start-line="155" selection-start-column="15" selection-end-line="155" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -117,11 +113,11 @@
         <option value="$PROJECT_DIR$/bower_components/google-map/google-map-marker.html" />
         <option value="$PROJECT_DIR$/src/sportal-find.html" />
         <option value="$PROJECT_DIR$/src/sportal-gmap-autocomplete.html" />
-        <option value="$PROJECT_DIR$/src/elements.html" />
         <option value="$PROJECT_DIR$/src/sportal-map.html" />
         <option value="$PROJECT_DIR$/src/sportal-gmap-autocomplete-create.html" />
         <option value="$PROJECT_DIR$/src/sportal-create.html" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/elements.html" />
         <option value="$PROJECT_DIR$/src/sportal-polymer.html" />
       </list>
     </option>
@@ -274,12 +270,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1468858725214</updated>
-      <workItem from="1468858727075" duration="120093000" />
+      <workItem from="1468858727075" duration="122676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="120093000" />
+    <option name="totallyTimeSpent" value="122676000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -455,14 +451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/elements.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-map.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -554,14 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bower_components/google-signin/google-signin.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4110">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1629">
@@ -570,10 +550,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bower_components/google-signin/google-signin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5205">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/elements.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="21" column="64" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sportal-polymer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="279" column="27" selection-start-line="279" selection-start-column="27" selection-end-line="279" selection-end-column="27" />
+        <state relative-caret-position="294">
+          <caret line="155" column="15" selection-start-line="155" selection-start-column="15" selection-end-line="155" selection-end-column="15" />
           <folding />
         </state>
       </provider>

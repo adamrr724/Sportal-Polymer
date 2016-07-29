@@ -146,6 +146,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 300px;
       }
 
+      .profileImage {
+        border-radius: 50px;
+        height: 60px;
+        box-shadow: 1px 0 8px 0 grey;
+        margin: 10px;
+        position:absolute;
+        top: 5px;
+        right:5px;
+        z-index: 10;
+
+      }
+
 
 
     </style>
@@ -166,7 +178,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="home" href="/home">Home</a>
           <a name="find" onClick="window.location.reload()" href="/find">Find</a>
           <a name="create" href="/create">Create</a>
-          <a name="events" href="/events">My Events</a>
+          <template is="dom-if" if="{{signedIn}}">
+            <a name="events" href="/events">My Events</a>
+          </template>
         </iron-selector>
 
         <template is="dom-if" if="{{pageReady}}">
@@ -183,6 +197,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
           </template>
         </template>
+
       </app-drawer>
 
       <!-- Main content -->
@@ -219,7 +234,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
               <h3>Or</h3>
               <div id="google-sign-in">
-                <google-signin raised signed-in="{{signedIn}}" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
+                <google-signin raised signed-in="{{signedIn}}" scope="email profile" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
+
+                <google-signin-aware
+                        scopes="{{scope}}"
+                        signed-in="{{signedIn}}"
+                        is-authorized="{{isAuthorized}}"
+                        need-additional-auth="{{needAdditionalAuth}}"
+                        on-google-signin-aware-success="_signInSuccess"
+                        on-google-signin-aware-signed-out="handleSignOut"></google-signin-aware>
               </div>
 
             </div>
@@ -227,6 +250,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-button class="text-close" on-Click="_modalClose" autofocus><strong>Close</strong></paper-button>
       </div>
     </paper-dialog>
+
+    <template is="dom-if" if="{{signedIn}}">
+      <img class="profileImage" src="{{userImage}}">
+    </template>
 
   </template>
 
@@ -255,6 +282,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               },
               pageReady: {
                 type: Boolean
+              },
+
+              userName: {
+                type: String,
+                value: ""
+              },
+
+              userEmail: {
+                type: String,
+                value: ""
+              },
+
+              userImage: {
+                type: String,
+                value: ""
               }
 
             },
@@ -262,10 +304,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             observers: [
               '_routePageChanged(routeData.page)'
             ],
-
-            listeners: {
-            'google-signin-success': '_signInSuccess'
-          },
 
 
       _modalClose: function () {
@@ -277,6 +315,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _signInSuccess: function () {
+        this.userName = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName();
+        this.userEmail = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getEmail();
+        this.userImage = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getImageUrl();
+
+        this._modalClose();
+      },
+
+      handleSignOut: function () {
         this._modalClose();
       },
 
