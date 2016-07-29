@@ -168,10 +168,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <a name="create" href="/create">Create</a>
           <a name="events" href="/events">My Events</a>
         </iron-selector>
-        <div id="sign-in-buttons">
-          <paper-button id="facebook-button" raised on-click="_modalOpen"><img class="media-icon" src="../images/facebook-white.png">Sign In With Facebook</paper-button>
-          <paper-button id="google-button" raised on-click="_modalOpen" ><img class="media-icon" src="../images/google-white.png">Sign In With Google</paper-button>
-        </div>
+
+        <template is="dom-if" if="{{pageReady}}">
+          <template is="dom-if" if="{{!signedIn}}">
+            <div id="sign-in-buttons">
+              <paper-button id="facebook-button" raised on-click="_modalOpen"><img class="media-icon" src="../images/facebook-white.png">Sign In With Facebook</paper-button>
+              <paper-button id="google-button" raised on-click="_modalOpen" ><img class="media-icon" src="../images/google-white.png">Sign In With Google</paper-button>
+            </div>
+          </template>
+
+          <template is="dom-if" if="{{signedIn}}">
+            <div id="google-sign-in">
+              <google-signin raised signed-in="{{signedIn}}" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
+            </div>
+          </template>
+        </template>
       </app-drawer>
 
       <!-- Main content -->
@@ -208,7 +219,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               </div>
               <h3>Or</h3>
               <div id="google-sign-in">
-                <google-signin client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
+                <google-signin raised signed-in="{{signedIn}}" client-id="77548032317-66dme6ebkcddsfj1q8ripa1og28usm79.apps.googleusercontent.com" brand="google" height="tall"></google-signin>
               </div>
 
             </div>
@@ -223,29 +234,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'sportal-polymer',
+            is: 'sportal-polymer',
 
-      properties: {
+            properties: {
 
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
-        },
+              page: {
+                type: String,
+                reflectToAttribute: true,
+                observer: '_pageChanged'
+              },
 
-        modalOpen: {
-          type: Boolean,
-          value: ""
-        }
+              modalOpen: {
+                type: Boolean,
+                value: ""
+              },
 
-      },
+              signedIn: {
+                type: Boolean,
+                notify: true
+              },
+              pageReady: {
+                type: Boolean
+              }
 
-      observers: [
-        '_routePageChanged(routeData.page)'
-      ],
+            },
+
+            observers: [
+              '_routePageChanged(routeData.page)'
+            ],
+
+            listeners: {
+            'google-signin-success': '_signInSuccess'
+          },
+
 
       _modalClose: function () {
         this.modalOpen = false;
+      },
+
+      ready: function () {
+        this.pageReady = true;
+      },
+
+      _signInSuccess: function () {
+        this._modalClose();
       },
 
       _modalOpen: function () {
