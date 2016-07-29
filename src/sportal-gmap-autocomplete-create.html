@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/google-apis/google-maps-api.html">
-<dom-module id="sportal-gmap-autocomplete">
+<dom-module id="sportal-gmap-autocomplete-create">
     <style>
         :host {
             display: inline-block;
@@ -17,12 +17,12 @@
 
         <google-maps-api id="maps" api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg" libraries="places" on-api-load="on_api_load"></google-maps-api>
 
-        <paper-input id="input" class="input" type="text" label="Search Location"></paper-input>
+        <paper-input required id="input" class="input" type="text" label="Enter Address"></paper-input>
     </template>
 </dom-module>
 <script>
     Polymer({
-        is: 'sportal-gmap-autocomplete',
+        is: 'sportal-gmap-autocomplete-create',
         properties: {
             value: {
                 type: String,

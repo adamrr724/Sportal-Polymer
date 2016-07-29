@@ -156,13 +156,13 @@
                                     fit-to-markers
                                     api-key="AIzaSyD0Oog2e-DQ167WD0Az9gfwaXxYvgrjdNg"
                                     single-info-window="true"
-                                    zoom="12"
+                                    zoom="8"
                                     latitude="{{latitude}}"
                                     longitude="{{longitude}}">
                             <template is="dom-repeat" items=[[ajaxResponse]]>
                                 <google-map-marker map="{{map}}"
-                                                   latitude=[[item.address.lat]]
-                                                   longitude=[[item.address.lng]]>
+                                                   latitude=[[item.addressGeo.lat]]
+                                                   longitude=[[item.addressGeo.lng]]>
                                     <div>
                                         <h4>[[item.name]]</h4>
                                         <h5>[[item.sport]]</h5>
@@ -285,12 +285,24 @@
             },
 
 
-            _selectedFilter: function() {
+            _selectedFilter: function(e) {
 
+                if(e.detail != 1) {
+                    if (e.detail.item.localName === "google-map-marker") {
+                        return;
+                    } else {
+                        this._queryGet();
+                    }
+                } else {
+                    this._queryGet();
+                }
+            },
+
+            _queryGet: function() {
                 var baseUrl = "";
                 var withFilter = "";
 
-                var currentLocationQuery = "?filter[where][address][near]=" + this.latitude + "," + this.longitude + "&filter[lt]=50";
+                var currentLocationQuery = "?filter[where][addressGeo][near]=" + this.latitude + "," + this.longitude + "&filter[limit]=50";
 
                 if (this.locationData) {
                     baseUrl = "http://localhost:3000/api/Events";
@@ -309,7 +321,7 @@
                 var sportFilter = "filter[where][sport]=" + this.sport;
                 var skillLevelFilter = "filter[where][skillLevel]=" + this.skillLevel;
                 var ageFilter = "filter[where][age]=" + this.age;
-                var locationSelectFilter = "filter[where][address][near]=" + this.locationSelection + "&filter[lt]=50";
+                var locationSelectFilter = "filter[where][addressGeo][near]=" + this.locationSelection + "&filter[limit]=50";
 
 
                 if (this.eventType) {

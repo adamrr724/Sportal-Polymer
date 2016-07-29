@@ -179,7 +179,7 @@
                   <paper-item value="Seasoned Athletes (30+)">Seasoned Athletes (30+)</paper-item>
                 </paper-listbox>
               </paper-dropdown-menu>
-              <paper-input required auto-validate="true" value="{{address}}"  name="address" label="Address"></paper-input>
+              <sportal-gmap-autocomplete-create location="{{locationData}}"></sportal-gmap-autocomplete-create>
               <paper-input required auto-validate="true" value="{{email}}" type="email"  name="email" label="Contact Email"></paper-input>
               <paper-input name="image" value="{{image}}" label="Image Link"></paper-input>
               <paper-textarea name="notes" value="{{notes}}" label="Notes"></paper-textarea>
@@ -247,7 +247,7 @@
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-input name="organization" value="{{organization}}" label="Organization Name"></paper-input>
-              <paper-input required auto-validate="true"  value="{{address}}" name="address" label="Address"></paper-input>
+              <sportal-gmap-autocomplete-create location="{{locationData}}"></sportal-gmap-autocomplete-create>
               <paper-input required auto-validate="true" value="{{email}}" type="email"   name="email" label="Contact Email"></paper-input>
               <paper-input name="image" auto-validate="true" value="{{image}}" label="Image Link"></paper-input>
               <paper-input name="website" value="{{website}}" label="Website Link URL"></paper-input>
@@ -311,7 +311,7 @@
                 </paper-listbox>
               </paper-dropdown-menu>
               <paper-input name="organization" value="{{organization}}" label="Organization Name"></paper-input>
-              <paper-input required auto-validate="true" value="{{address}}"  name="address" label="Address"></paper-input>
+              <sportal-gmap-autocomplete-create location="{{locationData}}"></sportal-gmap-autocomplete-create>
               <paper-input required auto-validate="true" value="{{email}}" type="email"  name="email" label="Contact Email"></paper-input>
               <paper-input name="image" auto-validate="true" value="{{image}}" label="Image Link"></paper-input>
               <paper-input name="website" value="{{website}}" label="Website Link URL"></paper-input>
@@ -395,7 +395,13 @@
         email: {
           value: ""
         },
-        address: {
+        addressName: {
+          value: ""
+        },
+        latitude: {
+          value: ""
+        },
+        longitude: {
           value: ""
         },
         notes: {
@@ -428,6 +434,10 @@
 
         ajaxBody: {
           type: Object
+        },
+
+        locationData: {
+          type: Object
         }
       },
 
@@ -435,6 +445,10 @@
       },
 
       _submitForm: function() {
+
+        this.latitude = this.locationData.geometry.location.lat();
+        this.longitude = this.locationData.geometry.location.lng();
+        this.addressName =  this.locationData.formatted_address;
 
         if (this.recurring === "recurring-no") {
           this.recurringSubmit = 0;
@@ -455,10 +469,11 @@
           "fees": this.fees,
           "skillLevel": this.skillLevel,
           "image": this.image,
-          "address": {
-            "lat": 45.52334,
-            "lng": -122.6776
+          "addressGeo": {
+            "lat": this.latitude,
+            "lng": this.longitude
           },
+          "addressName": this.addressName,
           "organization": this.organization,
           "email": this.email,
           "website": this.website
